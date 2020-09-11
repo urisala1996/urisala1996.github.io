@@ -515,7 +515,7 @@ Drawing.SimpleGraph = function(options) {
     switch (type) {
       case 0:
         /*Friendship connections*/
-        material = new THREE.LineBasicMaterial({ color: 0x606060, linewidth: 10 });
+        material = new THREE.LineBasicMaterial({ color: 0x606060, linewidth: 20 });
         line = new THREE.LineSegments( tmp_geo, material );
         line.scale.x = line.scale.y = line.scale.z = 1;
         line.originalScale = 3;
@@ -524,7 +524,7 @@ Drawing.SimpleGraph = function(options) {
       case 1:
         /*Work connections*/
         console.log("position: " + source.data.draw_object.position.x + ", " + target.data.draw_object.position.x);
-        material = new THREE.LineDashedMaterial({ color: 0xff00ff, scale: 1000, dashSize: 100, gapSize: 200 });
+        material = new THREE.LineDashedMaterial({ color: 0x2d46ab, scale: 1000, dashSize: 100, gapSize: 200 });
         line = new THREE.Line( tmp_geo, material );
         //line.computeLineDistances();
         //line.scale.x = line.scale.y = line.scale.z = 1;
