@@ -104,7 +104,7 @@ Drawing.SimpleGraph = function(options) {
 
     // Node geometry
     if(that.layout === "3d") {
-      geometry = new THREE.SphereGeometry(25);
+      geometry = new THREE.CircleGeometry(120,20);
     } else {
       geometry = new THREE.BoxGeometry( 50, 50, 0 );
     }
@@ -385,6 +385,10 @@ Drawing.SimpleGraph = function(options) {
     graph.addEdge(node18,node12);
     graph.addEdge(node18,node19);
 
+    graph.addEdge(node4,node5);
+    graph.addEdge(node4,node2);
+    graph.addEdge(node4,node1);
+
     /*Equipo cronica connections*/
     graph.addEdge(node19,node20);
     graph.addEdge(node19,node21);
@@ -464,6 +468,10 @@ Drawing.SimpleGraph = function(options) {
     drawEdge(node18,node12,2);
     drawEdge(node18,node19,2);
 
+    drawEdge(node4,node5,2);
+    drawEdge(node4,node2,2);
+    drawEdge(node4,node1,2);
+
     drawEdge(node19,node20,3);
     drawEdge(node19,node21,3);
 
@@ -484,7 +492,7 @@ Drawing.SimpleGraph = function(options) {
    *  Create a node object and add it to the scene.
    */
   function drawNode(node) {
-    var draw_object = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial( {  color: 0x000000, opacity: 0.4 } ) );
+    var draw_object = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial( {  color: 0xcccccc } ) );
     var label_object;
 
     var area = 5000;
@@ -534,8 +542,9 @@ Drawing.SimpleGraph = function(options) {
 
       case 2:
         /*Invisible connections*/
-        material = new THREE.LineBasicMaterial({ color: 0xffffff });
+        material = new THREE.LineBasicMaterial({ color: 0xffffff , opacity:0.01, transparent:true});
         line = new THREE.LineSegments( tmp_geo, material );
+        line.rederOrder = 1;
         line.scale.x = line.scale.y = line.scale.z = 1;
         line.originalScale = 1;
       break;
@@ -597,27 +606,16 @@ Drawing.SimpleGraph = function(options) {
           node.data.label_object.position.y = node.data.draw_object.position.y - 100;
           node.data.label_object.position.z = node.data.draw_object.position.z;
           node.data.label_object.lookAt(camera.position);
+          node.data.draw_object.lookAt(camera.position);
+
         } else {
           var label_object;
           if(node.data.name !== undefined){
             label_object = new THREE.AuthorInfo(node.data.name,node.data.yearBorn,node.data.yearDeath,node.data.childs,node.data.otherInfo, node.data.draw_object);
+            node.data.label_object = label_object;
           }
-          if(node.data.title !== undefined) {
-            label_object = new THREE.Label(node.data.title, node.data.draw_object);
-          } else {
-            //label_object = new THREE.Label(node.id, node.data.draw_object);
-          }
-          node.data.label_object = label_object;
+
           scene.add( node.data.label_object );
-        }
-      }
-    } else {
-      length = graph.nodes.length;
-      for(i=0; i<length; i++) {
-        node = graph.nodes[i];
-        if(node.data.label_object !== undefined) {
-          scene.remove( node.data.label_object );
-          node.data.label_object = undefined;
         }
       }
     }
