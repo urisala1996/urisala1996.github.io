@@ -50,19 +50,19 @@ THREE.ObjectSelection = function(parameters) {
     if( intersects.length > 0 ) {
       if ( this.INTERSECTED != intersects[ 0 ].object ) {
         if ( this.INTERSECTED ) {
-          this.INTERSECTED.material.color.setHex( this.INTERSECTED.currentHex );
+          //this.INTERSECTED.material.color.setHex( this.INTERSECTED.currentHex );
         }
 
         this.INTERSECTED = intersects[ 0 ].object;
-        this.INTERSECTED.currentHex = this.INTERSECTED.material.color.getHex();
-        this.INTERSECTED.material.color.setHex( 0xff0000 );
+        //this.INTERSECTED.currentHex = this.INTERSECTED.material.color.getHex();
+        //this.INTERSECTED.material.color.setHex( 0xff0000 );
         if(typeof callbackSelected === 'function') {
           callbackSelected(this.INTERSECTED);
         }
       }
     } else {
       if ( this.INTERSECTED ) {
-        this.INTERSECTED.material.color.setHex( this.INTERSECTED.currentHex );
+        //this.INTERSECTED.material.color.setHex( this.INTERSECTED.currentHex );
       }
       this.INTERSECTED = null;
       if(typeof callbackSelected === 'function') {
