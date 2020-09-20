@@ -86,7 +86,7 @@ Drawing.SimpleGraph = function(options) {
 
     controls = new THREE.TrackballControls(camera);
 
-    controls.rotateSpeed = 0.4;
+    controls.rotateSpeed = 0.7;
     controls.zoomSpeed = 4;
     controls.panSpeed = 5;
 
@@ -116,13 +116,16 @@ Drawing.SimpleGraph = function(options) {
         selected: function(obj) {
           // display info
           if(obj !== null) {
-            info_text.select = "Object " + obj.id;
+            info_text.select = "Object " + obj.name;
           } else {
             delete info_text.select;
           }
         },
         clicked: function(obj) {
-          console.log("Clicked: " + obj.id);
+          console.log("Clicked: " + obj.name);
+          obj.material.color.set( 0xff00ff );
+          showRelatives(obj.name);
+
         }
       });
     }
@@ -179,6 +182,7 @@ Drawing.SimpleGraph = function(options) {
     var node21  = new GRAPHVIS.Node(21);
 
     /* Authors info */
+    /* The ObjectID (for rendering) starts and OFFSET=8 + NodeID*/
     node0.data.name       = "SALVADOR DALÍ";
     node0.data.yearBorn   = 1904;
     node0.data.yearDeath  = 1989;
@@ -504,7 +508,7 @@ Drawing.SimpleGraph = function(options) {
       draw_object.position.z = Math.floor(Math.random() * (area + area + 1) - area);
     }
 
-    draw_object.id = node.id;
+    draw_object.name = node.id;
     node.data.draw_object = draw_object;
     node.position = draw_object.position;
     scene.add( node.data.draw_object );
@@ -568,6 +572,24 @@ Drawing.SimpleGraph = function(options) {
       geometries.push(tmp_geo);
 
       scene.add( line );
+  }
+
+  function showRelatives(objName){
+    var selectedNode;
+    var sceneObject;
+    var selectedColor = 0x00ffff;
+    //Get the selected Node
+    selectedNode = graph.getNode(objName);
+    //console.log("Selected Node:" + selectedNode.id + ", " + selectedNode.data.name);
+
+    //Change color of the connected nodes and itself
+    selectedNode.data.draw_object.material.color.setHex(0x00ffff);
+    for(i=0; i<selectedNode.nodesTo.length; i++) {
+      //console.log(selectedNode.nodesTo[i].data.name);
+      sceneObject = selectedNode.nodesTo[i].data.draw_object;
+      sceneObject.material.color.setHex(0x00ffff);
+    }
+
   }
 
 
