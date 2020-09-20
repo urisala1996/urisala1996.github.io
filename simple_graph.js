@@ -122,6 +122,7 @@ Drawing.SimpleGraph = function(options) {
           }
         },
         clicked: function(obj) {
+          console.log("Clicked: " + obj.id);
         }
       });
     }
@@ -526,14 +527,15 @@ Drawing.SimpleGraph = function(options) {
         material = new THREE.LineBasicMaterial({ color: 0x606060, linewidth: 1 });
         line = new THREE.LineSegments( tmp_geo, material );
         line.scale.x = line.scale.y = line.scale.z = 1;
-        line.originalScale = 3;
+        line.originalScale = 1;
       break;
 
       case 1:
         /*Work connections*/
-        console.log("position: " + source.data.draw_object.position.x + ", " + target.data.draw_object.position.x);
-        material = new THREE.LineDashedMaterial({ color: 0x2d46ab, scale: 1000, dashSize: 100, gapSize: 200 });
-        line = new THREE.Line( tmp_geo, material );
+        material = new THREE.LineBasicMaterial({ color: 0x2d46ab, linewidth: 1 });
+        line = new THREE.LineSegments( tmp_geo, material );
+        line.scale.x = line.scale.y = line.scale.z = 1;
+        line.originalScale = 1;
         //line.computeLineDistances();
         //line.scale.x = line.scale.y = line.scale.z = 1;
         //line.originalScale = 1;
@@ -544,7 +546,7 @@ Drawing.SimpleGraph = function(options) {
         /*Invisible connections*/
         material = new THREE.LineBasicMaterial({ color: 0xffffff , opacity:0.01, transparent:true});
         line = new THREE.LineSegments( tmp_geo, material );
-        line.rederOrder = 1;
+        line.renderOrder = 1;
         line.scale.x = line.scale.y = line.scale.z = 1;
         line.originalScale = 1;
       break;
