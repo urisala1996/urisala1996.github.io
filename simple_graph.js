@@ -61,6 +61,10 @@ Drawing.SimpleGraph = function(options) {
   this.nodes_count = options.numNodes || 20;
   this.edges_count = options.numEdges || 10;
 
+  var colorSelection  = 0x0398fc;
+  var colorRelatives  = 0x7ea5f7;
+  var colorBase       = 0xcccccc;
+
   var camera, controls, scene, renderer, interaction, geometry, object_selection;
   var stats;
   var info_text = {};
@@ -345,83 +349,116 @@ Drawing.SimpleGraph = function(options) {
     graph.addEdge(node0,node15);
     graph.addEdge(node0,node16);
 
-    graph.addEdge(node11,node3);
-    graph.addEdge(node11,node5);
-    graph.addEdge(node11,node14);
-    graph.addEdge(node11,node19);
+    graph.addEdge(node1,node3);
+    graph.addEdge(node1,node2);
+    graph.addEdge(node1,node0);
+
+    graph.addEdge(node2,node1);
+
+    graph.addEdge(node3,node9);
+    graph.addEdge(node3,node11);
+    graph.addEdge(node3,node14);
+    graph.addEdge(node3,node1);
+
+    /* Invisible connections */
+    graph.addEdge(node4,node5);
+    graph.addEdge(node4,node2);
+    graph.addEdge(node4,node1);
+
+    graph.addEdge(node5,node19);
+    graph.addEdge(node5,node11);
+    graph.addEdge(node5,node18);
+    graph.addEdge(node5,node7);
+
+    graph.addEdge(node6,node9);
 
     graph.addEdge(node7,node5);
     graph.addEdge(node7,node19);
+    graph.addEdge(node7,node0);
+    graph.addEdge(node7,node14);
 
     graph.addEdge(node8,node5);
     graph.addEdge(node8,node14);
 
+    graph.addEdge(node9,node6);
+    graph.addEdge(node9,node3);
+    graph.addEdge(node9,node14);
+
     graph.addEdge(node10,node12);
     graph.addEdge(node10,node14);
+
+    graph.addEdge(node11,node3);
+    graph.addEdge(node11,node5);
+    graph.addEdge(node11,node14);
+    graph.addEdge(node11,node19);
+    graph.addEdge(node11,node0);
+
+    graph.addEdge(node12,node13);
+    graph.addEdge(node12,node14);
+    graph.addEdge(node12,node10);
+
+    graph.addEdge(node13,node15);
+    graph.addEdge(node13,node12);
+    graph.addEdge(node13,node16);
+    graph.addEdge(node13,node14);
 
     graph.addEdge(node14,node3);
     graph.addEdge(node14,node12);
     graph.addEdge(node14,node13);
     graph.addEdge(node14,node15);
     graph.addEdge(node14,node16);
-
-    graph.addEdge(node13,node15);
-    graph.addEdge(node13,node16);
-    graph.addEdge(node13,node12);
-
-    graph.addEdge(node1,node3);
-    graph.addEdge(node1,node2);
-
-    graph.addEdge(node5,node19);
-
-    /* Work Connections */
-    graph.addEdge(node6,node9);
-    graph.addEdge(node3,node9);
-
     graph.addEdge(node14,node9);
+    graph.addEdge(node14,node8);
+    graph.addEdge(node14,node0);
+    graph.addEdge(node14,node10);
+    graph.addEdge(node14,node7);
+    graph.addEdge(node14,node11);
 
-    graph.addEdge(node7,node0);
-    graph.addEdge(node7,node14);
+    graph.addEdge(node15,node13);
+    graph.addEdge(node15,node14);
+    graph.addEdge(node15,node0);
+
+    graph.addEdge(node16,node13);
+    graph.addEdge(node16,node14);
+    graph.addEdge(node16,node0);
 
     /* Invisible connections */
     graph.addEdge(node17,node16);
     graph.addEdge(node17,node9);
-
+    /* Invisible connections */
     graph.addEdge(node18,node12);
     graph.addEdge(node18,node19);
-
-    graph.addEdge(node4,node5);
-    graph.addEdge(node4,node2);
-    graph.addEdge(node4,node1);
 
     /*Equipo cronica connections*/
     graph.addEdge(node19,node20);
     graph.addEdge(node19,node21);
-
+    graph.addEdge(node19,node11);
+    graph.addEdge(node19,node5);
+    graph.addEdge(node19,node7);
 
     /* Draw Nodes */
-    drawNode(node0);
-    drawNode(node1);
-    drawNode(node2);
-    drawNode(node3);
-    drawNode(node4);
-    drawNode(node5);
-    drawNode(node6);
-    drawNode(node7);
-    drawNode(node8);
-    drawNode(node9);
-    drawNode(node10);
-    drawNode(node11);
-    drawNode(node12);
-    drawNode(node13);
-    drawNode(node14);
-    drawNode(node15);
-    drawNode(node16);
-    drawNode(node17);
-    drawNode(node18);
-    drawNode(node19);
-    drawNode(node20);
-    drawNode(node21);
+    drawNode(node0,0);
+    drawNode(node1,0);
+    drawNode(node2,0);
+    drawNode(node3,0);
+    drawNode(node4,1); //Invisible
+    drawNode(node5,0);
+    drawNode(node6,0);
+    drawNode(node7,0);
+    drawNode(node8,0);
+    drawNode(node9,0);
+    drawNode(node10,0);
+    drawNode(node11,0);
+    drawNode(node12,0);
+    drawNode(node13,0);
+    drawNode(node14,0);
+    drawNode(node15,0);
+    drawNode(node16,0);
+    drawNode(node17,1); //Invisible
+    drawNode(node18,1); //Invisible
+    drawNode(node19,0);
+    drawNode(node20,0);
+    drawNode(node21,0);
 
     /* Draw Edges*/
     drawEdge(node0,node1,0);
@@ -480,8 +517,6 @@ Drawing.SimpleGraph = function(options) {
     drawEdge(node19,node20,3);
     drawEdge(node19,node21,3);
 
-
-
     that.layout_options.width = that.layout_options.width || 2000;
     that.layout_options.height = that.layout_options.height || 2000;
     that.layout_options.iterations = that.layout_options.iterations || 100000;
@@ -496,8 +531,8 @@ Drawing.SimpleGraph = function(options) {
   /**
    *  Create a node object and add it to the scene.
    */
-  function drawNode(node) {
-    var draw_object = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial( {  color: 0xcccccc } ) );
+  function drawNode(node,isInvisible) {
+    var draw_object = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial( {  color: colorBase } ) );
     var label_object;
 
     var area = 5000;
@@ -511,6 +546,9 @@ Drawing.SimpleGraph = function(options) {
     draw_object.name = node.id;
     node.data.draw_object = draw_object;
     node.position = draw_object.position;
+    if(isInvisible){
+      node.data.isInvisible = true;
+    }
     scene.add( node.data.draw_object );
   }
 
@@ -577,17 +615,27 @@ Drawing.SimpleGraph = function(options) {
   function showRelatives(objName){
     var selectedNode;
     var sceneObject;
-    var selectedColor = 0x00ffff;
+
+    //Reset the color of the last Relative Nodes
+    for(i=0; i<graph.nodes.length; i++) {
+      node_object = graph.nodes[i].data.draw_object;
+      node_object.material.color.setHex(colorBase);
+    }
+
     //Get the selected Node
     selectedNode = graph.getNode(objName);
-    //console.log("Selected Node:" + selectedNode.id + ", " + selectedNode.data.name);
 
     //Change color of the connected nodes and itself
-    selectedNode.data.draw_object.material.color.setHex(0x00ffff);
-    for(i=0; i<selectedNode.nodesTo.length; i++) {
-      //console.log(selectedNode.nodesTo[i].data.name);
-      sceneObject = selectedNode.nodesTo[i].data.draw_object;
-      sceneObject.material.color.setHex(0x00ffff);
+    selectedNode.data.draw_object.material.color.setHex(colorSelection);
+
+    if(selectedNode.data.isInvisible == null){
+
+      for(i=0; i<selectedNode.nodesTo.length; i++) {
+        //console.log(selectedNode.nodesTo[i].data.name);
+        sceneObject = selectedNode.nodesTo[i].data.draw_object;
+        sceneObject.material.color.setHex(colorRelatives);
+      }
+
     }
 
   }
