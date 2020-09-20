@@ -86,15 +86,15 @@ Drawing.SimpleGraph = function(options) {
 
     controls = new THREE.TrackballControls(camera);
 
-    controls.rotateSpeed = 0.5;
-    controls.zoomSpeed = 5.2;
-    controls.panSpeed = 1;
+    controls.rotateSpeed = 0.4;
+    controls.zoomSpeed = 4;
+    controls.panSpeed = 5;
 
     controls.noZoom = false;
     controls.noPan = false;
 
-    controls.staticMoving = false;
-    controls.dynamicDampingFactor = 0.3;
+    controls.staticMoving = true;
+    controls.dynamicDampingFactor = 0.7;
 
     controls.keys = [ 65, 83, 68 ];
 
@@ -178,133 +178,133 @@ Drawing.SimpleGraph = function(options) {
     var node21  = new GRAPHVIS.Node(21);
 
     /* Authors info */
-    node0.data.name       = "Salvador Dalí";
+    node0.data.name       = "SALVADOR DALÍ";
     node0.data.yearBorn   = 1904;
     node0.data.yearDeath  = 1989;
     node0.data.childs     = 0;
     node0.data.otherInfo  = 0;
 
-    node1.data.name       = "Andy Warhol";
+    node1.data.name       = "ANDY WARHOL";
     node1.data.yearBorn   = 1928;
     node1.data.yearDeath  = 1987;
     node1.data.childs     = 0;
     node1.data.otherInfo  = 0;
 
-    node2.data.name       = "Robert Mapplethorpe";
+    node2.data.name       = "ROBERT MAPPLETHORPE";
     node2.data.yearBorn   = 1946;
     node2.data.yearDeath  = 1989;
     node2.data.childs     = 0;
     node2.data.otherInfo  = 0;
 
-    node3.data.name       = "Miquel Barceló";
+    node3.data.name       = "MIQUEL BARCELÓ";
     node3.data.yearBorn   = 1957;
     node3.data.yearDeath  = 0;
     node3.data.childs     = "Marcela i Joaquim";
     node3.data.otherInfo  = "Mare artista";
 
-    node4.data.name       = "Richard Avedon";
+    node4.data.name       = "RICHARD AVEDON";
     node4.data.yearBorn   = 1928;
     node4.data.yearDeath  = 1987;
     node4.data.childs     = "1 Fill";
     node4.data.otherInfo  = 0;
 
-    node5.data.name       = "Antonio Saura";
+    node5.data.name       = "ANTONIO SAURA";
     node5.data.yearBorn   = 1930;
     node5.data.yearDeath  = 1998;
     node5.data.childs     = "María, Ana i Elena";
     node5.data.otherInfo  = 0;
 
-    node6.data.name       = "Alighiero Boetti";
+    node6.data.name       = "ALIGHIERO BOETTI";
     node6.data.yearBorn   = 1940;
     node6.data.yearDeath  = 1994;
     node6.data.childs     = "Matteo, Agata i Giordano";
     node6.data.otherInfo  = 0;
 
-    node7.data.name       = "Eduardo Arroyo";
+    node7.data.name       = "EDUARDO ARROYO";
     node7.data.yearBorn   = 1937;
     node7.data.yearDeath  = 2018;
     node7.data.childs     = "Pimpi";
     node7.data.otherInfo  = 0;
 
-    node8.data.name       = "Manuel Millares";
+    node8.data.name       = "MANUEL MILLARES";
     node8.data.yearBorn   = 1926;
     node8.data.yearDeath  = 1972;
     node8.data.childs     = "Eva";
     node8.data.otherInfo  = 0;
 
-    node9.data.name       = "Lucio Fontana";
+    node9.data.name       = "LUCIO FONTANA";
     node9.data.yearBorn   = 1899;
     node9.data.yearDeath  = 1968;
     node9.data.childs     = 0;
     node9.data.otherInfo  = "Pare artista";
 
-    node10.data.name       = "Pablo Palazuelo";
+    node10.data.name       = "PABLO PALAZUELO";
     node10.data.yearBorn   = 1916;
     node10.data.yearDeath  = 2007;
     node10.data.childs     = 0;
     node10.data.otherInfo  = 0;
 
-    node11.data.name       = "Antoni Tàpies";
+    node11.data.name       = "ANTONI TÀPIES";
     node11.data.yearBorn   = 1923;
     node11.data.yearDeath  = 2012;
     node11.data.childs     = "Antoni, Clara i Miquel Àngel";
     node11.data.otherInfo  = 0;
 
-    node12.data.name       = "Eduardo Chillida";
+    node12.data.name       = "EDUARDO CHILLIDA";
     node12.data.yearBorn   = 1924;
     node12.data.yearDeath  = 2002;
     node12.data.childs     = "Guiomar, Pedro, Iñaki, Karmentxina, Susana, María, Luis i Eduardo";
     node12.data.otherInfo  = "Pare i mare artistes frustrats";
 
-    node13.data.name       = "Alexander Calder";
+    node13.data.name       = "ALEXANDER CALDER";
     node13.data.yearBorn   = 1898;
     node13.data.yearDeath  = 1976;
     node13.data.childs     = "Mary i Sandra";
     node13.data.otherInfo  = "Pare, mare i avi aristes";
 
-    node14.data.name       = "Joan Miró";
+    node14.data.name       = "JOAN MIRÓ";
     node14.data.yearBorn   = 1893;
     node14.data.yearDeath  = 1983;
     node14.data.childs     = "Maria Dolors";
     node14.data.otherInfo  = 0;
 
-    node15.data.name       = "Man Ray";
+    node15.data.name       = "MAN RAY";
     node15.data.yearBorn   = 1890;
     node15.data.yearDeath  = 1976;
     node15.data.childs     = 0;
     node15.data.otherInfo  = 0;
 
-    node16.data.name       = "Jean Arp";
+    node16.data.name       = "JEAN ARP";
     node16.data.yearBorn   = 1897;
     node16.data.yearDeath  = 1966;
     node16.data.childs     = 0;
     node16.data.otherInfo  = 0;
 
-    node17.data.name       = "Giacomo Balla";
+    node17.data.name       = "GIACOMO BALLA";
     node17.data.yearBorn   = 1871;
     node17.data.yearDeath  = 1958;
     node17.data.childs     = 0;
     node17.data.otherInfo  = "Pare artista";
 
-    node18.data.name       = "Christo";
+    node18.data.name       = "CHRISTO";
     node18.data.yearBorn   = 1935;
     node18.data.yearDeath  = 2020;
     node18.data.childs     = "Cyril";
     node18.data.otherInfo  = 0;
 
-    node19.data.name       = "Equipo Crónica";
+    node19.data.name       = "EQUIPO CRÓNICA";
     node19.data.yearBorn   = 0;
     node19.data.yearDeath  = 0;
     node19.data.childs     = 0;
     node19.data.otherInfo  = 0;
 
-    node20.data.name       = "Manolo Valdés";
+    node20.data.name       = "MANOLO VALDÉS";
     node20.data.yearBorn   = 1942;
     node20.data.yearDeath  = 0;
     node20.data.childs     = 0;
     node20.data.otherInfo  = 0;
 
-    node21.data.name       = "Rafael Solbes";
+    node21.data.name       = "RAFAEL SOLBES";
     node21.data.yearBorn   = 1940;
     node21.data.yearDeath  = 1981;
     node21.data.childs     = 0;
@@ -523,7 +523,7 @@ Drawing.SimpleGraph = function(options) {
     switch (type) {
       case 0:
         /*Friendship connections*/
-        material = new THREE.LineBasicMaterial({ color: 0x606060, linewidth: 20 });
+        material = new THREE.LineBasicMaterial({ color: 0x606060, linewidth: 1 });
         line = new THREE.LineSegments( tmp_geo, material );
         line.scale.x = line.scale.y = line.scale.z = 1;
         line.originalScale = 3;

@@ -26,7 +26,7 @@ THREE.Label = function(text, parameters) {
     var fontsize = "30pt";
 
     // set font size to measure the text
-    xc.font = fontsize + " Arial";
+    xc.font = fontsize + " Aileron";
     var len = xc.measureText(text).width;
 
     labelCanvas.setAttribute('width', len);
@@ -34,7 +34,7 @@ THREE.Label = function(text, parameters) {
 
     // set font size again cause it will be reset
     // when setting a new width
-    xc.font = fontsize + " Arial";
+    xc.font = fontsize + " Aileron";
     xc.textBaseline = 'top';
 
     xc.fillText(text, 0, 0);
@@ -73,19 +73,19 @@ THREE.AuthorInfo = function( name, yearBorn, yearDeath, childs, otherInfo, param
     //var offset = 0;
 
     // set font size to measure the text
-    xc.font = fontsize + " Arial";
+    xc.font = fontsize + " Aileron";
     var len = xc.measureText(name).width;
 
     labelCanvas.setAttribute('width', len);
 
     // set font size again cause it will be reset
     // when setting a new width
-    xc.font = fontsize + " Arial";
+    xc.font = fontsize + " Aileron";
     xc.textBaseline = 'top';
 
     xc.fillText(name, 0, 0);
 
-    xc.font = "20pt" + " Arial";
+    xc.font = "20pt" + " Aileron";
     if(yearDeath != 0) {
       xc.fillText(yearBorn + " - " + yearDeath, 0, 50);
     } else {
@@ -98,12 +98,12 @@ THREE.AuthorInfo = function( name, yearBorn, yearDeath, childs, otherInfo, param
     }
 
     if(childs != 0){
-      xc.font = "20pt" + " Arial";
+      xc.font = "18pt" + " Aileron";
       xc.fillText(childs,0,75);
     }
 
     if(otherInfo != 0){
-      xc.font = "16pt" + " Arial";
+      xc.font = "16pt" + " Aileron";
       xc.fillText(otherInfo,0,100);
     }
 
