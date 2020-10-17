@@ -127,8 +127,9 @@ Drawing.SimpleGraph = function(options) {
         },
         clicked: function(obj) {
           console.log("Clicked: " + obj.name);
-          obj.material.color.set( 0xff00ff );
+          //obj.material.color.set( 0xff00ff );
           showRelatives(obj.name);
+          dropdownInfo(obj.name);
 
         }
       });
@@ -523,8 +524,8 @@ Drawing.SimpleGraph = function(options) {
     that.layout_options.layout = that.layout_options.layout || that.layout;
     graph.layout = new Layout.ForceDirected(graph, that.layout_options);
     graph.layout.init();
-    info_text.nodes = "Nodes " + graph.nodes.length;
-    info_text.edges = "Edges " + graph.edges.length;
+    //info_text.nodes = "Nodes " + graph.nodes.length;
+    //info_text.edges = "Edges " + graph.edges.length;
   }
 
 
@@ -612,6 +613,9 @@ Drawing.SimpleGraph = function(options) {
       scene.add( line );
   }
 
+  /*
+    Change the color for the Selected node and its relatives
+  */
   function showRelatives(objName){
     var selectedNode;
     var sceneObject;
@@ -637,6 +641,15 @@ Drawing.SimpleGraph = function(options) {
       }
 
     }
+
+  }
+
+  /*
+    Show more info when the Author is Clicked
+  */
+  function dropdownInfo(objName){
+
+
 
   }
 
@@ -677,6 +690,12 @@ Drawing.SimpleGraph = function(options) {
           node.data.label_object.position.x = node.data.draw_object.position.x;
           node.data.label_object.position.y = node.data.draw_object.position.y - 100;
           node.data.label_object.position.z = node.data.draw_object.position.z;
+          
+          //If Author is clicked, show more info into the position and lookAt()
+          if(){
+
+          }
+          
           node.data.label_object.lookAt(camera.position);
           node.data.draw_object.lookAt(camera.position);
 
