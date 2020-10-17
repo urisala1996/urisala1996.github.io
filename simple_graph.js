@@ -690,12 +690,12 @@ Drawing.SimpleGraph = function(options) {
           node.data.label_object.position.x = node.data.draw_object.position.x;
           node.data.label_object.position.y = node.data.draw_object.position.y - 100;
           node.data.label_object.position.z = node.data.draw_object.position.z;
-          
+
           //If Author is clicked, show more info into the position and lookAt()
-          if(){
+          if(true){
 
           }
-          
+
           node.data.label_object.lookAt(camera.position);
           node.data.draw_object.lookAt(camera.position);
 
