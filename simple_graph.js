@@ -126,10 +126,10 @@ Drawing.SimpleGraph = function(options) {
           }
         },
         clicked: function(obj) {
-          console.log("Clicked: " + obj.name);
+          //console.log("Clicked: " + obj.name);
           //obj.material.color.set( 0xff00ff );
           showRelatives(obj.name);
-          dropdownInfo(obj.name);
+          updateAuthorInfo(obj.name);
 
         }
       });
@@ -547,6 +547,9 @@ Drawing.SimpleGraph = function(options) {
     draw_object.name = node.id;
     node.data.draw_object = draw_object;
     node.position = draw_object.position;
+    //Set the author Info label invisible
+    node.show_authorInfo = false;
+
     if(isInvisible){
       node.data.isInvisible = true;
     }
@@ -647,10 +650,14 @@ Drawing.SimpleGraph = function(options) {
   /*
     Show more info when the Author is Clicked
   */
-  function dropdownInfo(objName){
+  function updateAuthorInfo(objName){
+      selectedNode = graph.getNode(objName);
 
-
-
+      if(selectedNode.show_authorInfo == true){
+        selectedNode.show_authorInfo = false;
+      }else{
+        selectedNode.show_authorInfo = true;
+      }
   }
 
 
@@ -686,27 +693,55 @@ Drawing.SimpleGraph = function(options) {
       length = graph.nodes.length;
       for(i=0; i<length; i++) {
         node = graph.nodes[i];
-        if(node.data.label_object !== undefined) {
-          node.data.label_object.position.x = node.data.draw_object.position.x;
-          node.data.label_object.position.y = node.data.draw_object.position.y - 100;
-          node.data.label_object.position.z = node.data.draw_object.position.z;
 
-          //If Author is clicked, show more info into the position and lookAt()
-          if(true){
+        //If Author is clicked, set position for AuthorInfo
+        if(node.data.info_object !== undefined){
 
+          if(node.show_authorInfo == true){
+
+            node.data.info_object.visible = true;
+
+            node.data.info_object.position.x = node.data.draw_object.position.x;
+            node.data.info_object.position.y = node.data.draw_object.position.y - 200; //Testing this position
+            node.data.info_object.position.z = node.data.draw_object.position.z;
+
+            node.data.info_object.lookAt(camera.position);
+            
+          }else{
+            node.data.info_object.visible = false;
           }
 
-          node.data.label_object.lookAt(camera.position);
+
+        }else{
+          var info_object;
+
+          if(node.show_authorInfo){
+            info_object = new THREE.AuthorInfo(node.data.yearBorn,node.data.yearDeath,node.data.childs,node.data.otherInfo, node.data.draw_object);
+            node.data.info_object = info_object;
+            scene.add( node.data.info_object );
+          }
+
+        }
+
+        if(node.data.name_object !== undefined) {
+
+          //Set position for AuthoName
+          node.data.name_object.position.x = node.data.draw_object.position.x;
+          node.data.name_object.position.y = node.data.draw_object.position.y - 100;
+          node.data.name_object.position.z = node.data.draw_object.position.z;
+
+          node.data.name_object.lookAt(camera.position);
           node.data.draw_object.lookAt(camera.position);
 
         } else {
-          var label_object;
+          var name_object;
+
           if(node.data.name !== undefined){
-            label_object = new THREE.AuthorInfo(node.data.name,node.data.yearBorn,node.data.yearDeath,node.data.childs,node.data.otherInfo, node.data.draw_object);
-            node.data.label_object = label_object;
+            name_object = new THREE.AuthorName(node.data.name, node.data.draw_object);
+            node.data.name_object = name_object;
           }
 
-          scene.add( node.data.label_object );
+          scene.add( node.data.name_object );
         }
       }
     }

@@ -1,68 +1,4 @@
-/**
-  @author David Piegza
-
-  Implements a label for an object.
-
-  It creates an text in canvas and sets the text-canvas as
-  texture of a cube geometry.
-
-  Parameters:
-  text: <string>, text of the label
-
-  Example:
-  var label = new THREE.Label("Text of the label");
-  label.position.x = 100;
-  label.position.y = 100;
-  scene.addObject(label);
- */
-
-THREE.Label = function(text, parameters) {
-  parameters = parameters || {};
-
-  var labelCanvas = document.createElement( "canvas" );
-
-  function create() {
-    var xc = labelCanvas.getContext("2d");
-    var fontsize = "30pt";
-
-    // set font size to measure the text
-    xc.font = fontsize + " Aileron";
-    var len = xc.measureText(text).width;
-
-    labelCanvas.setAttribute('width', len);
-    //console.log("length: "+len);
-
-    // set font size again cause it will be reset
-    // when setting a new width
-    xc.font = fontsize + " Aileron";
-    xc.textBaseline = 'top';
-
-    xc.fillText(text, 0, 0);
-
-    var geometry = new THREE.BoxGeometry(len, 200, 0);
-    var xm = new THREE.MeshBasicMaterial({
-      map: new THREE.CanvasTexture(
-        labelCanvas,
-        THREE.UVMapping,
-        THREE.ClampToEdgeWrapping,
-        THREE.ClampToEdgeWrapping,
-        THREE.LinearFilter,
-        THREE.LinearFilter
-      ),
-      transparent: true
-    });
-    xm.map.needsUpdate = true;
-
-    // set text canvas to cube geometry
-    var labelObject = new THREE.Mesh(geometry, xm);
-    return labelObject;
-  }
-
-  return create();
-
-};
-
-THREE.AuthorInfo = function( name, yearBorn, yearDeath, childs, otherInfo, parameters) {
+THREE.AuthorName = function( name, parameters) {
   parameters = parameters || {};
 
   var labelCanvas = document.createElement( "canvas" );
@@ -84,6 +20,51 @@ THREE.AuthorInfo = function( name, yearBorn, yearDeath, childs, otherInfo, param
     xc.textBaseline = 'top';
 
     xc.fillText(name, 0, 0);
+
+    var geometry = new THREE.BoxGeometry(len, 200, 0);
+    var xm = new THREE.MeshBasicMaterial({
+      map: new THREE.CanvasTexture(
+        labelCanvas,
+        THREE.UVMapping,
+        THREE.ClampToEdgeWrapping,
+        THREE.ClampToEdgeWrapping,
+        THREE.LinearFilter,
+        THREE.LinearFilter
+      ),
+      transparent: true
+    });
+    xm.map.needsUpdate = true;
+
+    // set text canvas to cube geometry
+    var labelObject = new THREE.Mesh(geometry, xm);
+    return labelObject;
+  }
+
+  return create();
+};
+
+THREE.AuthorInfo = function( yearBorn, yearDeath, childs, otherInfo, parameters) {
+  parameters = parameters || {};
+
+  var labelCanvas = document.createElement( "canvas" );
+
+  function create() {
+    var xc = labelCanvas.getContext("2d");
+    var fontsize = "40pt";
+    //var offset = 0;
+
+    // set font size to measure the text
+    xc.font = fontsize + " Aileron";
+    var len = xc.measureText("antonio saura").width;
+
+    labelCanvas.setAttribute('width', len);
+
+    // set font size again cause it will be reset
+    // when setting a new width
+    //xc.font = fontsize + " Aileron";
+    //xc.textBaseline = 'top';
+
+    //xc.fillText(name, 0, 0);
 
     xc.font = "20pt" + " Aileron";
     if(yearDeath != 0) {
