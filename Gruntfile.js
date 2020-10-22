@@ -2,7 +2,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     jshint: {
-      all: ['Gruntfile.js', 'src/graph.js', 'src/layouts/*.js', 'src/utils/Label.js', 'src/utils/ObjectSelection.js']
+      all: ['Gruntfile.js', 'src/graph.js', 'src/layouts/*.js', 'src/utils/Label.js', 'src/utils/ObjectSelection.js','src/utils/OrbitControls.js']
     },
     uglify: {
       options: {
