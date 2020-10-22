@@ -88,16 +88,23 @@ Drawing.SimpleGraph = function(options) {
     camera = new THREE.PerspectiveCamera(40, window.innerWidth/window.innerHeight, 1, 1000000);
     camera.position.z = 10000;
 
-    controls = new THREE.TrackballControls(camera);
+    //controls = new THREE.TrackballControls(camera);
+    controls = new THREE.OrbitControls(camera, renderer.domElement);
 
-    controls.rotateSpeed = 0.7;
-    controls.zoomSpeed = 4;
-    controls.panSpeed = 5;
+    controls.rotateSpeed = 1.0;
+    controls.zoomSpeed = 1.2;
+    controls.panSpeed = 0.8;
 
-    controls.noZoom = false;
-    controls.noPan = false;
+    controls.maxPolarAngle = 2.76632;
+    controls.minPolarAngle = 1.7;
 
-    controls.staticMoving = true;
+    controls.autoRotate = true;
+    controls.rotateSpeed = 0.5;
+
+    controls.enableZoom = true;
+    controls.maxDistance = 8000;
+    controls.minDistance = 5;
+
     controls.dynamicDampingFactor = 0.7;
 
     controls.keys = [ 65, 83, 68 ];
@@ -106,12 +113,7 @@ Drawing.SimpleGraph = function(options) {
 
     scene = new THREE.Scene();
 
-    // Node geometry
-    if(that.layout === "3d") {
-      geometry = new THREE.CircleGeometry(120,20);
-    } else {
-      geometry = new THREE.BoxGeometry( 50, 50, 0 );
-    }
+
 
     // Create node selection, if set
     if(that.selection) {
@@ -128,6 +130,7 @@ Drawing.SimpleGraph = function(options) {
         clicked: function(obj) {
           //console.log("Clicked: " + obj.name);
           //obj.material.color.set( 0xff00ff );
+          controls.autoRotate = false;
           showRelatives(obj.name);
           updateAuthorInfo(obj.name);
 
@@ -533,6 +536,9 @@ Drawing.SimpleGraph = function(options) {
    *  Create a node object and add it to the scene.
    */
   function drawNode(node,isInvisible) {
+
+    // Node geometry
+    var geometry = new THREE.CircleGeometry(120,40);
     var draw_object = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial( {  color: colorBase } ) );
     var label_object;
 
@@ -664,10 +670,8 @@ Drawing.SimpleGraph = function(options) {
   function animate() {
     requestAnimationFrame( animate );
     controls.update();
+    //console.log("Azimuth: " + controls.getAzimuthalAngle() + "Polar: " + controls.getPolarAngle());
     render();
-    if(that.show_info) {
-      printInfo();
-    }
   }
 
 
@@ -676,10 +680,7 @@ Drawing.SimpleGraph = function(options) {
 
     // Generate layout if not finished
     if(!graph.layout.finished) {
-      info_text.calc = "<span style='color: red'>Calculating layout...</span>";
       graph.layout.generate();
-    } else {
-      info_text.calc = "";
     }
 
     // Update position of lines (edges)
@@ -706,7 +707,7 @@ Drawing.SimpleGraph = function(options) {
             node.data.info_object.position.z = node.data.draw_object.position.z;
 
             node.data.info_object.lookAt(camera.position);
-            
+
           }else{
             node.data.info_object.visible = false;
           }
