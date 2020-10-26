@@ -1,50 +1,3 @@
-/**
-  @author David Piegza
-
-  Implements a simple graph drawing with force-directed placement in 2D and 3D.
-
-  It uses the force-directed-layout implemented in:
-  https://github.com/davidpiegza/Graph-Visualization/blob/master/layouts/force-directed-layout.js
-
-  Drawing is done with Three.js: http://github.com/mrdoob/three.js
-
-  To use this drawing, include the graph-min.js file and create a SimpleGraph object:
-
-  <!DOCTYPE html>
-  <html>
-    <head>
-      <title>Graph Visualization</title>
-      <script type="text/javascript" src="path/to/graph-min.js"></script>
-    </head>
-    <body onload="new Drawing.SimpleGraph({layout: '3d', showStats: true, showInfo: true})">
-    </bod>
-  </html>
-
-  Parameters:
-  options = {
-    layout: "2d" or "3d"
-
-    showStats: <bool>, displays FPS box
-    showInfo: <bool>, displays some info on the graph and layout
-              The info box is created as <div id="graph-info">, it must be
-              styled and positioned with CSS.
-
-
-    selection: <bool>, enables selection of nodes on mouse over (it displays some info
-               when the showInfo flag is set)
-
-
-    limit: <int>, maximum number of nodes
-
-    numNodes: <int> - sets the number of nodes to create.
-    numEdges: <int> - sets the maximum number of edges for a node. A node will have
-              1 to numEdges edges, this is set randomly.
-  }
-
-
-  Feel free to contribute a new drawing!
-
- */
 
 var Drawing = Drawing || {};
 
@@ -62,7 +15,7 @@ Drawing.SimpleGraph = function(options) {
   this.edges_count = options.numEdges || 10;
 
   var colorSelection  = 0x0398fc;
-  var colorRelatives  = 0x7ea5f7;
+  var colorRelatives  = 0xb5ccff;
   var colorBase       = 0xcccccc;
 
   var camera, controls, scene, renderer, interaction, geometry, object_selection;
@@ -99,7 +52,7 @@ Drawing.SimpleGraph = function(options) {
     controls.minPolarAngle = 1.7;
 
     controls.autoRotate = true;
-    controls.rotateSpeed = 0.5;
+    controls.rotateSpeed = 0.2;
 
     controls.enableZoom = true;
     controls.maxDistance = 8000;
@@ -703,7 +656,7 @@ Drawing.SimpleGraph = function(options) {
             node.data.info_object.visible = true;
 
             node.data.info_object.position.x = node.data.draw_object.position.x;
-            node.data.info_object.position.y = node.data.draw_object.position.y - 200; //Testing this position
+            node.data.info_object.position.y = node.data.draw_object.position.y - 125; //Testing this position
             node.data.info_object.position.z = node.data.draw_object.position.z;
 
             node.data.info_object.lookAt(camera.position);
