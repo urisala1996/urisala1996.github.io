@@ -33,6 +33,7 @@ Drawing.SimpleGraph = function(options) {
   var graph = new GRAPHVIS.Graph({limit: options.limit});
 
   var geometries = [];
+  var triangles = [];
 
   var that=this;
 
@@ -617,6 +618,7 @@ Drawing.SimpleGraph = function(options) {
    */
   function drawEdge(source, target, type) {
 
+    var bird;
     var tmp_geo = new THREE.Geometry();
     tmp_geo.vertices.push(source.data.draw_object.position);
     tmp_geo.vertices.push(target.data.draw_object.position);
@@ -655,6 +657,29 @@ Drawing.SimpleGraph = function(options) {
 
         line = new THREE.Mesh(g.geometry, material);
 
+        var triangle_geo = new THREE.Geometry();
+        var v1 = new THREE.Vector3(-20,20,0);
+        var v2 = new THREE.Vector3(0,0,0);
+        var v3 = new THREE.Vector3(20,20,0);
+
+        triangle_geo.vertices.push(v1);
+        triangle_geo.vertices.push(v2);
+        triangle_geo.vertices.push(v3);
+
+        triangle_geo.faces.push( new THREE.Face3( 0, 1, 2 ) );
+        triangle_geo.computeFaceNormals();
+
+        var triangle_mesh= new THREE.Mesh( triangle_geo, new THREE.MeshBasicMaterial( { color: red, side: THREE.DoubleSide } ) );
+
+        triangle_mesh.position.x = (target.data.draw_object.position.x + source.data.draw_object.position.x)/2;
+        triangle_mesh.position.y = (target.data.draw_object.position.y + source.data.draw_object.position.y)/2;
+        triangle_mesh.position.z = (target.data.draw_object.position.z + source.data.draw_object.position.z)/2;
+
+        triangles.push(triangle_mesh);
+
+        scene.add(triangle_mesh);
+
+
       break;
 
       case 2:
@@ -672,6 +697,28 @@ Drawing.SimpleGraph = function(options) {
         });
 
         line = new THREE.Mesh(g.geometry, material);
+
+        var triangle_geo = new THREE.Geometry();
+        var v1 = new THREE.Vector3(-20,20,0);
+        var v2 = new THREE.Vector3(0,0,0);
+        var v3 = new THREE.Vector3(20,20,0);
+
+        triangle_geo.vertices.push(v1);
+        triangle_geo.vertices.push(v2);
+        triangle_geo.vertices.push(v3);
+
+        triangle_geo.faces.push( new THREE.Face3( 0, 1, 2 ) );
+        triangle_geo.computeFaceNormals();
+
+        var triangle_mesh= new THREE.Mesh( triangle_geo, new THREE.MeshBasicMaterial( { color: green, side: THREE.DoubleSide } ) );
+
+        triangle_mesh.position.x = (target.data.draw_object.position.x + source.data.draw_object.position.x)/2;
+        triangle_mesh.position.y = (target.data.draw_object.position.y + source.data.draw_object.position.y)/2;
+        triangle_mesh.position.z = (target.data.draw_object.position.z + source.data.draw_object.position.z)/2;
+
+        triangles.push(triangle_mesh);
+
+        scene.add(triangle_mesh);
 
       break;
 
@@ -759,6 +806,9 @@ Drawing.SimpleGraph = function(options) {
   function render() {
     var i, length, node;
 
+    for(i=0; i<triangles.length; i++){
+      triangles[i].lookAt(camera.position);
+    }
     // Show labels if set
     // It creates the labels when this options is set during visualization
     if(that.show_labels) {
@@ -853,6 +903,14 @@ Drawing.SimpleGraph = function(options) {
   function randomFromTo(from, to) {
     return Math.floor(Math.random() * (to - from + 1) + from);
   }
+
+  function rotateObject(object, degreeX=0, degreeY=0, degreeZ=0) {
+   object.rotateX(THREE.Math.degToRad(degreeX));
+   object.rotateY(THREE.Math.degToRad(degreeY));
+   object.rotateZ(THREE.Math.degToRad(degreeZ));
+  }
+
+
 /*
   // Stop layout calculation
   this.stop_calculating = function() {

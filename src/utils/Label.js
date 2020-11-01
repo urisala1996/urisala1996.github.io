@@ -63,9 +63,9 @@ THREE.AuthorInfo = function( yearBorn, yearDeath, childs, otherInfo, parameters)
     // set font size to measure the text
     xc.font = fontsize + " Aileron";
     var len = xc.measureText("xxxxxxxxxxxx").width;
-    labelCanvas.setAttribute('width', 800);
+    labelCanvas.setAttribute('width', 1000);
 
-    xc.font = "30pt" + " Aileron";
+    xc.font = "24pt" + " Aileron";
     xc.textBaseline = 'top';
     //xc.textAlign = 'center';
     if(yearDeath != 0 && yearBorn != 0) {
@@ -84,7 +84,7 @@ THREE.AuthorInfo = function( yearBorn, yearDeath, childs, otherInfo, parameters)
     }
 
     if(childs != 0){
-      xc.font = "28pt" + " Aileron";
+      xc.font = "22pt" + " Aileron";
       xc.fillStyle = "#f7ab28";
       xc.fillText(childs,0,50+offset);
       xc.fillStyle = "#000000";
@@ -92,7 +92,7 @@ THREE.AuthorInfo = function( yearBorn, yearDeath, childs, otherInfo, parameters)
     }
 
     if(otherInfo != 0){
-      xc.font = "26pt" + " Aileron";
+      xc.font = "22pt" + " Aileron";
       xc.fillStyle = "#cb6af7";
       xc.fillText(otherInfo,0,50+offset);
       xc.fillStyle = "#f7ab28";
