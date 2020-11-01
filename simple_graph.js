@@ -17,8 +17,17 @@ Drawing.SimpleGraph = function(options) {
   var colorSelection  = 0x0398fc;
   var colorRelatives  = 0xb5ccff;
   var colorBase       = 0xcccccc;
+  var colorEdge       = 0x595959;
 
-  var camera, controls, scene, renderer, interaction, geometry, object_selection;
+  var green           = 0x61CF63;
+  var red             = 0xF54545;
+  var orange          = 0xF7AB28;
+  var purple          = 0xCB6AF7;
+  var yellow          = 0xFFEE36;
+
+  var circleRadius    = 130;
+
+  var camera, controls, scene, renderer, interaction, geometry, object_selection, resolution;
   var stats;
   var info_text = {};
   var graph = new GRAPHVIS.Graph({limit: options.limit});
@@ -37,10 +46,10 @@ Drawing.SimpleGraph = function(options) {
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight);
 
-
     camera = new THREE.PerspectiveCamera(40, window.innerWidth/window.innerHeight, 1, 1000000);
     camera.position.z = 10000;
 
+    resolution = new THREE.Vector2(window.innerWidth,window.innerHeight);
     //controls = new THREE.TrackballControls(camera);
     controls = new THREE.OrbitControls(camera, renderer.domElement);
 
@@ -81,7 +90,9 @@ Drawing.SimpleGraph = function(options) {
           }
         },
         clicked: function(obj) {
-          //console.log("Clicked: " + obj.name);
+          var node = graph.getNode(obj.name);
+          console.log(obj.name);
+          //console.log(node.data.name + ": " + node.position.x + "," + node.position.y + "," + node.position.z);
           //obj.material.color.set( 0xff00ff );
           controls.autoRotate = false;
           showRelatives(obj.name);
@@ -149,132 +160,198 @@ Drawing.SimpleGraph = function(options) {
     node0.data.yearDeath  = 1989;
     node0.data.childs     = 0;
     node0.data.otherInfo  = 0;
+    node0.position.x      = 803.898;
+    node0.position.y      = 40.167;
+    node0.position.z      = 155.77;
 
     node1.data.name       = "ANDY WARHOL";
     node1.data.yearBorn   = 1928;
     node1.data.yearDeath  = 1987;
     node1.data.childs     = 0;
     node1.data.otherInfo  = 0;
+    node1.position.x      = 12.2;
+    node1.position.y      = 469.19;
+    node1.position.z      = 627.93;
 
     node2.data.name       = "ROBERT MAPPLETHORPE";
     node2.data.yearBorn   = 1946;
     node2.data.yearDeath  = 1989;
     node2.data.childs     = 0;
     node2.data.otherInfo  = 0;
+    node2.position.x      = -484.43;
+    node2.position.y      = 959.18;
+    node2.position.z      = 1174.03;
 
     node3.data.name       = "MIQUEL BARCELÓ";
     node3.data.yearBorn   = 1957;
     node3.data.yearDeath  = 0;
     node3.data.childs     = "Marcela i Joaquim";
     node3.data.otherInfo  = "Mare artista";
+    node3.position.x      = 271.717;
+    node3.position.y      = -71.308;
+    node3.position.z      = -68.04;
 
     node4.data.name       = "RICHARD AVEDON";
     node4.data.yearBorn   = 1928;
     node4.data.yearDeath  = 1987;
     node4.data.childs     = "1 Fill";
     node4.data.otherInfo  = 0;
+    node4.position.x      =
+    node4.position.y      =
+    node4.position.z      =
 
     node5.data.name       = "ANTONIO SAURA";
     node5.data.yearBorn   = 1930;
     node5.data.yearDeath  = 1998;
     node5.data.childs     = "María, Ana i Elena";
     node5.data.otherInfo  = 0;
+    node5.position.x      = 29.65;
+    node5.position.y      = 1395.15;
+    node5.position.z      = 688.24;
 
     node6.data.name       = "ALIGHIERO BOETTI";
     node6.data.yearBorn   = 1940;
     node6.data.yearDeath  = 1994;
     node6.data.childs     = "Matteo, Agata i Giordano";
     node6.data.otherInfo  = 0;
+    node6.position.x      = -372.66;
+    node6.position.y      = -1684.54;
+    node6.position.z      = -454.41;
 
     node7.data.name       = "EDUARDO ARROYO";
     node7.data.yearBorn   = 1937;
     node7.data.yearDeath  = 2018;
     node7.data.childs     = "Pimpi";
     node7.data.otherInfo  = 0;
+    node7.position.x      = 1036;
+    node7.position.y      = 807.45;
+    node7.position.z      = -558.226;
 
     node8.data.name       = "MANUEL MILLARES";
     node8.data.yearBorn   = 1926;
     node8.data.yearDeath  = 1972;
     node8.data.childs     = "Eva";
     node8.data.otherInfo  = 0;
+    node8.position.x      = 1584.53;
+    node8.position.y      = 625.85;
+    node8.position.z      = -7.921;
 
     node9.data.name       = "LUCIO FONTANA";
     node9.data.yearBorn   = 1899;
     node9.data.yearDeath  = 1968;
     node9.data.childs     = 0;
     node9.data.otherInfo  = "Pare artista";
+    node9.position.x      = 256.72;
+    node9.position.y      = -968.91;
+    node9.position.z      = -285.14;
 
     node10.data.name       = "PABLO PALAZUELO";
     node10.data.yearBorn   = 1916;
     node10.data.yearDeath  = 2007;
     node10.data.childs     = 0;
     node10.data.otherInfo  = 0;
+    node10.position.x      = 1669.95;
+    node10.position.y      = -531.577;
+    node10.position.z      = -1053.35;
 
     node11.data.name       = "ANTONI TÀPIES";
     node11.data.yearBorn   = 1923;
     node11.data.yearDeath  = 2012;
     node11.data.childs     = "Antoni, Clara i Miquel Àngel";
     node11.data.otherInfo  = 0;
+    node11.position.x      = 705.88;
+    node11.position.y      = 645.087;
+    node11.position.z      = -345.177;
 
     node12.data.name       = "EDUARDO CHILLIDA";
     node12.data.yearBorn   = 1924;
     node12.data.yearDeath  = 2002;
     node12.data.childs     = "Guiomar, Pedro, Iñaki, Karmentxina, Susana, María, Luis i Eduardo";
     node12.data.otherInfo  = "Pare i mare artistes frustrats";
+    node12.position.x      = 1816.20;
+    node12.position.y      = -86.06;
+    node12.position.z      = -784.397;
 
     node13.data.name       = "ALEXANDER CALDER";
     node13.data.yearBorn   = 1898;
     node13.data.yearDeath  = 1976;
     node13.data.childs     = "Mary i Sandra";
     node13.data.otherInfo  = "Pare, mare i avi aristes";
+    node13.position.x      = 1661.47;
+    node13.position.y      = -621.39;
+    node13.position.z      = -247.71;
 
     node14.data.name       = "JOAN MIRÓ";
     node14.data.yearBorn   = 1893;
     node14.data.yearDeath  = 1983;
     node14.data.childs     = "Maria Dolors";
     node14.data.otherInfo  = 0;
+    node14.position.x      = 1104.95;
+    node14.position.y      = -154.78;
+    node14.position.z      = -331.42;
 
     node15.data.name       = "MAN RAY";
     node15.data.yearBorn   = 1890;
     node15.data.yearDeath  = 1976;
     node15.data.childs     = 0;
     node15.data.otherInfo  = 0;
+    node15.position.x      = 1440.21;
+    node15.position.y      = -399.70;
+    node15.position.z      = 263.22;
 
     node16.data.name       = "JEAN ARP";
     node16.data.yearBorn   = 1897;
     node16.data.yearDeath  = 1966;
     node16.data.childs     = 0;
     node16.data.otherInfo  = 0;
+    node16.position.x      = 1059.58;
+    node16.position.y      = -838.75;
+    node16.position.z      = 12.48;
 
     node17.data.name       = "GIACOMO BALLA";
     node17.data.yearBorn   = 1871;
     node17.data.yearDeath  = 1958;
     node17.data.childs     = 0;
     node17.data.otherInfo  = "Pare artista";
+    node17.position.x      = 600.14;
+    node17.position.y      = -1831.31;
+    node17.position.z      = 49.676;
 
     node18.data.name       = "CHRISTO";
     node18.data.yearBorn   = 1935;
     node18.data.yearDeath  = 2020;
     node18.data.childs     = "Cyril";
     node18.data.otherInfo  = 0;
+    node18.position.x      = 1731.66;
+    node18.position.y      = 1141.599;
+    node18.position.z      = -989.499;
 
     node19.data.name       = "EQUIPO CRÓNICA";
     node19.data.yearBorn   = 0;
     node19.data.yearDeath  = 0;
     node19.data.childs     = 0;
     node19.data.otherInfo  = 0;
+    node19.position.x      = 986.35;
+    node19.position.y      = 1608.49;
+    node19.position.z      = -868.323;
 
     node20.data.name       = "MANOLO VALDÉS";
     node20.data.yearBorn   = 1942;
     node20.data.yearDeath  = 0;
     node20.data.childs     = 0;
     node20.data.otherInfo  = 0;
+    node20.position.x      = 722.76;
+    node20.position.y      = 2525.897;
+    node20.position.z      = -1729.134;
 
     node21.data.name       = "RAFAEL SOLBES";
     node21.data.yearBorn   = 1940;
     node21.data.yearDeath  = 1981;
     node21.data.childs     = 0;
     node21.data.otherInfo  = 0;
+    node21.position.x      = 1277.69;
+    node21.position.y      = 2837.516;
+    node21.position.z      = -1143.642;
 
     graph.addNode(node0);
     graph.addNode(node1);
@@ -393,6 +470,10 @@ Drawing.SimpleGraph = function(options) {
     graph.addEdge(node19,node5);
     graph.addEdge(node19,node7);
 
+
+
+    //while(!graph.layout.finished);
+
     /* Draw Nodes */
     drawNode(node0,0);
     drawNode(node1,0);
@@ -453,35 +534,27 @@ Drawing.SimpleGraph = function(options) {
 
     drawEdge(node5,node19,0);
 
-    drawEdge(node6,node9,1);
-    drawEdge(node3,node9,1);
+    drawEdge(node6,node9,2);
+    drawEdge(node3,node9,2);
 
-    drawEdge(node14,node9,1);
+    drawEdge(node14,node9,2);
 
     drawEdge(node7,node0,1);
     drawEdge(node7,node14,1);
 
-    drawEdge(node17,node16,2);
-    drawEdge(node17,node9,2);
+    //drawEdge(node17,node16,2);
+    //drawEdge(node17,node9,2);
 
-    drawEdge(node18,node12,2);
-    drawEdge(node18,node19,2);
+    //drawEdge(node18,node12,2);
+    //drawEdge(node18,node19,2);
 
-    drawEdge(node4,node5,2);
-    drawEdge(node4,node2,2);
-    drawEdge(node4,node1,2);
+    //drawEdge(node4,node5,2);
+    //drawEdge(node4,node2,2);
+    //drawEdge(node4,node1,2);
 
     drawEdge(node19,node20,3);
     drawEdge(node19,node21,3);
 
-    that.layout_options.width = that.layout_options.width || 2000;
-    that.layout_options.height = that.layout_options.height || 2000;
-    that.layout_options.iterations = that.layout_options.iterations || 100000;
-    that.layout_options.layout = that.layout_options.layout || that.layout;
-    graph.layout = new Layout.ForceDirected(graph, that.layout_options);
-    graph.layout.init();
-    //info_text.nodes = "Nodes " + graph.nodes.length;
-    //info_text.edges = "Edges " + graph.edges.length;
   }
 
 
@@ -491,17 +564,13 @@ Drawing.SimpleGraph = function(options) {
   function drawNode(node,isInvisible) {
 
     // Node geometry
-    var geometry = new THREE.CircleGeometry(120,40);
+    var geometry = new THREE.CircleGeometry(circleRadius,40);
     var draw_object = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial( {  color: colorBase } ) );
     var label_object;
 
-    var area = 5000;
-    draw_object.position.x = Math.floor(Math.random() * (area + area + 1) - area);
-    draw_object.position.y = Math.floor(Math.random() * (area + area + 1) - area);
-
-    if(that.layout === "3d") {
-      draw_object.position.z = Math.floor(Math.random() * (area + area + 1) - area);
-    }
+    draw_object.position.x = node.position.x;
+    draw_object.position.y = node.position.y;
+    draw_object.position.z = node.position.z;
 
     draw_object.name = node.id;
     node.data.draw_object = draw_object;
@@ -524,53 +593,84 @@ Drawing.SimpleGraph = function(options) {
     var tmp_geo = new THREE.Geometry();
     tmp_geo.vertices.push(source.data.draw_object.position);
     tmp_geo.vertices.push(target.data.draw_object.position);
-
+    var g = new MeshLine();
+    g.setGeometry(tmp_geo);
 
     switch (type) {
       case 0:
         /*Friendship connections*/
-        material = new THREE.LineBasicMaterial({ color: 0x606060, linewidth: 1 });
-        line = new THREE.LineSegments( tmp_geo, material );
-        line.scale.x = line.scale.y = line.scale.z = 1;
-        line.originalScale = 1;
+
+        var material = new MeshLineMaterial({
+      		useMap: 0,
+      		color: new THREE.Color( colorEdge ),
+      		opacity: 1,
+      		resolution: resolution,
+      		sizeAttenuation: false,
+      		lineWidth: 2.5,
+      	});
+
+        line = new THREE.Mesh(g.geometry, material);
+
       break;
 
       case 1:
-        /*Work connections*/
-        material = new THREE.LineBasicMaterial({ color: 0x2d46ab, linewidth: 1 });
-        line = new THREE.LineSegments( tmp_geo, material );
-        line.scale.x = line.scale.y = line.scale.z = 1;
-        line.originalScale = 1;
-        //line.computeLineDistances();
-        //line.scale.x = line.scale.y = line.scale.z = 1;
-        //line.originalScale = 1;
+        /* Rebuig Connections*/
+
+        var material = new MeshLineMaterial({
+          useMap: false,
+          color: new THREE.Color( red ),
+          opacity: 1,
+          resolution: resolution,
+          sizeAttenuation: false,
+          dashArray: 0.01,
+          lineWidth: 3,
+        });
+
+        line = new THREE.Mesh(g.geometry, material);
 
       break;
 
       case 2:
-        /*Invisible connections*/
-        material = new THREE.LineBasicMaterial({ color: 0xffffff , opacity:0.01, transparent:true});
-        line = new THREE.LineSegments( tmp_geo, material );
-        line.renderOrder = 1;
-        line.scale.x = line.scale.y = line.scale.z = 1;
-        line.originalScale = 1;
+        /* Adora connections*/
+
+        var material = new MeshLineMaterial({
+          useMap: false,
+          color: new THREE.Color( green ),
+          opacity: 1,
+          resolution: resolution,
+          sizeAttenuation: false,
+          dashArray: 0.01,
+          lineWidth: 3,
+          alphaTest:1,
+        });
+
+        line = new THREE.Mesh(g.geometry, material);
+
       break;
 
       case 3:
         /*Equipo cronica connections*/
-        material = new THREE.LineBasicMaterial({ color: 0x606060 });
-        line = new THREE.LineSegments( tmp_geo, material );
-        line.scale.x = line.scale.y = line.scale.z = 1;
-        line.originalScale = 1;
+
+        var material = new MeshLineMaterial({
+          useMap: false,
+          color: new THREE.Color( colorEdge ),
+          opacity: 1,
+          resolution: resolution,
+          sizeAttenuation: false,
+          lineWidth: 2.5,
+        });
+
+        line = new THREE.Mesh(g.geometry, material);
+
       break;
 
     }
 
       // NOTE: Deactivated frustumCulled, otherwise it will not draw all lines (even though
       // it looks like the lines are in the view frustum).
-      line.frustumCulled = false;
+      //line.frustumCulled = false;
 
-      geometries.push(tmp_geo);
+      //geometries.push(g.geometry);
 
       scene.add( line );
   }
@@ -630,17 +730,18 @@ Drawing.SimpleGraph = function(options) {
 
   function render() {
     var i, length, node;
-
+/*
     // Generate layout if not finished
     if(!graph.layout.finished) {
       graph.layout.generate();
     }
-
+*/
+/*
     // Update position of lines (edges)
     for(i=0; i<geometries.length; i++) {
       geometries[i].verticesNeedUpdate = true;
     }
-
+*/
     // Show labels if set
     // It creates the labels when this options is set during visualization
     if(that.show_labels) {
@@ -679,9 +780,9 @@ Drawing.SimpleGraph = function(options) {
 
         if(node.data.name_object !== undefined) {
 
-          //Set position for AuthoName
+          //Set position for AuthorName
           node.data.name_object.position.x = node.data.draw_object.position.x;
-          node.data.name_object.position.y = node.data.draw_object.position.y - 100;
+          node.data.name_object.position.y = node.data.draw_object.position.y - 50;
           node.data.name_object.position.z = node.data.draw_object.position.z;
 
           node.data.name_object.lookAt(camera.position);
@@ -732,9 +833,11 @@ Drawing.SimpleGraph = function(options) {
   function randomFromTo(from, to) {
     return Math.floor(Math.random() * (to - from + 1) + from);
   }
-
+/*
   // Stop layout calculation
   this.stop_calculating = function() {
     graph.layout.stop_calculating();
   };
+*/
+
 };
