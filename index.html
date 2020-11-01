@@ -27,36 +27,38 @@
         font-family: Aileron;
 
       }
-      #graph-info {
-        position: absolute;
-        top: 0px;
-        left: 40%;
-        margin: 10px;
-        background-color: #ffffe0;
-        color: #333;
-        padding: 5px 10px;
-      }
-      #options {
-        position: absolute;
-        top: 0;
-        right: 0;
-        z-index: 10;
-      }
 
+      p.linia_estima {
+        color:#61cf63;
+      }
+      p.linia_rebuig {
+        color:#f54545;
+      }
+      span.text_negre {
+        color:#000000;
+      }
+      h4.sidelines {
+        text-align: right;
+        border-bottom: 1px solid #000;
+        height: 0.5em; }
+      h4.sidelines span {
+        display: inline-block;
+        background: #fff;
+        padding:0 0.25em; }
 
     </style>
   </head>
+
   <body onload="createDrawing()">
 
-
-    <div style="position: absolute; bottom: 1;">
-      ---- Relació d'amistat o coneixença personal
+    <div style = " position: absolute; bottom: 1; padding: 30px;">
+      <h4 class="sidelines"><span> Relació d'amistat o coneixença personal</span></h4>
+      <p class = "linia_estima">-------- <span class="text_negre">Estima del treball de l'altre</span></p>
+      <p class = "linia_rebuig">-------- <span class="text_negre">Rebuig del treball de l'altre</span></p>
       <p style="color:rgb(247, 171, 40);">Filles i fills referenciats. Font biblioteca</p>
-      <p style="color:rgb(247, 171, 40);">*Font externa*</p>
-      <p style="color:rgb(97, 207, 99);">Apreci del treball de l'altre</p>
-      <p style="color:rgb(245, 69, 69);">Rebuig del treball de l'altre</p>
+      <p style="color:rgb(247, 171, 40);">Font externa*</p>
       <p style="color:rgb(203, 106, 247);">Progenitors artistes referenciats a la biblioteca</p>
-      <p style="color:rgb(255, 238, 54);">*Són vius a l'actualitat*</p>
+      <p style="color:rgb(36, 109, 173);">Són vius a l'actualitat (Novembre 2020)</p>
 
     </div>
   </body>
