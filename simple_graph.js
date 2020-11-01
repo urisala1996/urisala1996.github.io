@@ -657,10 +657,17 @@ Drawing.SimpleGraph = function(options) {
 
         line = new THREE.Mesh(g.geometry, material);
 
-        var triangle_geo = new THREE.Geometry();
-        var v1 = new THREE.Vector3(-20,20,0);
-        var v2 = new THREE.Vector3(0,0,0);
-        var v3 = new THREE.Vector3(20,20,0);
+        if(source.data.nom == "SALVADOR" || target.data.nom == "SALVADOR"){
+          var triangle_geo = new THREE.Geometry();
+          var v1 = new THREE.Vector3(0,20,0);
+          var v2 = new THREE.Vector3(0,0,0);
+          var v3 = new THREE.Vector3(20,0,0);
+        }else{
+          var triangle_geo = new THREE.Geometry();
+          var v1 = new THREE.Vector3(-20,20,0);
+          var v2 = new THREE.Vector3(0,0,0);
+          var v3 = new THREE.Vector3(20,20,0);
+        }
 
         triangle_geo.vertices.push(v1);
         triangle_geo.vertices.push(v2);
@@ -698,11 +705,22 @@ Drawing.SimpleGraph = function(options) {
 
         line = new THREE.Mesh(g.geometry, material);
 
-        var triangle_geo = new THREE.Geometry();
-        var v1 = new THREE.Vector3(-20,20,0);
-        var v2 = new THREE.Vector3(0,0,0);
-        var v3 = new THREE.Vector3(20,20,0);
-
+        if(source.data.nom == "JOAN" || target.data.nom == "JOAN"){
+          var triangle_geo = new THREE.Geometry();
+          var v1 = new THREE.Vector3(0,20,0);
+          var v2 = new THREE.Vector3(0,0,0);
+          var v3 = new THREE.Vector3(20,0,0);
+        }else if (source.data.nom == "ALIGHIERO" || target.data.nom == "ALIGHIERO") {
+          var triangle_geo = new THREE.Geometry();
+          var v1 = new THREE.Vector3(-20,20,0);
+          var v2 = new THREE.Vector3(20,-20,0);
+          var v3 = new THREE.Vector3(20,20,0);
+        }else{
+          var triangle_geo = new THREE.Geometry();
+          var v1 = new THREE.Vector3(-20,20,0);
+          var v2 = new THREE.Vector3(0,0,0);
+          var v3 = new THREE.Vector3(20,20,0);
+        }
         triangle_geo.vertices.push(v1);
         triangle_geo.vertices.push(v2);
         triangle_geo.vertices.push(v3);
@@ -717,6 +735,8 @@ Drawing.SimpleGraph = function(options) {
         triangle_mesh.position.z = (target.data.draw_object.position.z + source.data.draw_object.position.z)/2;
 
         triangles.push(triangle_mesh);
+
+
 
         scene.add(triangle_mesh);
 
