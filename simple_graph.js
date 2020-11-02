@@ -58,8 +58,8 @@ Drawing.SimpleGraph = function(options) {
     controls.zoomSpeed = 1.2;
     controls.panSpeed = 0.8;
 
-    controls.maxPolarAngle = 2.76632;
-    controls.minPolarAngle = 1.7;
+    controls.maxPolarAngle = 2.8;//2.76632;
+    controls.minPolarAngle = 0.5;//1.7;
 
     controls.autoRotate = true;
     controls.rotateSpeed = 0.2;
