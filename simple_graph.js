@@ -854,7 +854,6 @@ Drawing.SimpleGraph = function(options) {
       }
   }
 
-
   function animate() {
     requestAnimationFrame( animate );
     controls.update();
@@ -869,108 +868,71 @@ Drawing.SimpleGraph = function(options) {
     for(i=0; i<triangles.length; i++){
       triangles[i].lookAt(camera.position);
     }
-    // Show labels if set
+
     // It creates the labels when this options is set during visualization
-    if(that.show_labels) {
-      length = graph.nodes.length;
-      for(i=0; i<length; i++) {
-        node = graph.nodes[i];
+    length = graph.nodes.length;
+    for(i=0; i<length; i++) {
+      node = graph.nodes[i];
 
-        //If Author is clicked, set position for AuthorInfo
-        if(node.data.info_object !== undefined){
+      //If Author is clicked, set position for AuthorInfo
+      if(node.data.info_object !== undefined){
 
-          if(node.show_authorInfo == true){
+        if(node.show_authorInfo == true){
 
-            node.data.info_object.visible = true;
+          node.data.info_object.visible = true;
 
-            node.data.info_object.position.x = 400;
-            node.data.info_object.position.y = -200;
-            node.data.info_object.position.z = 0;
+          node.data.info_object.position.x = 400;
+          node.data.info_object.position.y = -200;
+          node.data.info_object.position.z = 0;
 
-            node.data.info_object.lookAt(camera.position);
-
-          }else{
-            node.data.info_object.visible = false;
-          }
-
+          node.data.info_object.lookAt(camera.position);
 
         }else{
-          var info_object;
-
-          if(node.show_authorInfo){
-            info_object = new THREE.AuthorInfo(node.data.yearBorn,node.data.yearDeath,node.data.childs,node.data.otherInfo, node.data.draw_object);
-            node.data.info_object = info_object;
-            node.data.draw_object.add(node.data.info_object);
-          }
-
+          node.data.info_object.visible = false;
         }
 
-        if(node.data.name_object !== undefined) {
 
-          //Set position for AuthorName
-          node.data.name_object.position.x = 0;
-          node.data.name_object.position.y = -40;
-          node.data.name_object.position.z = 5;
+      }else{
+        var info_object;
 
-          node.data.name_object.lookAt(camera.position);
-          node.data.draw_object.lookAt(camera.position);
-
-        } else {
-          var name_object;
-
-          name_object = new THREE.AuthorName(node.data.nom, node.data.cognom, node.data.draw_object);
-          node.data.name_object = name_object;
-          node.data.draw_object.add(node.data.name_object);
-
+        if(node.show_authorInfo){
+          info_object = new THREE.AuthorInfo(node.data.yearBorn,node.data.yearDeath,node.data.childs,node.data.otherInfo, node.data.draw_object);
+          node.data.info_object = info_object;
+          node.data.draw_object.add(node.data.info_object);
         }
+
+      }
+
+      if(node.data.name_object !== undefined) {
+
+        //Set position for AuthorName
+        node.data.name_object.position.x = 0;
+        node.data.name_object.position.y = -40;
+        node.data.name_object.position.z = 5;
+
+        node.data.name_object.lookAt(camera.position);
+        node.data.draw_object.lookAt(camera.position);
+
+      } else {
+        var name_object;
+
+        name_object = new THREE.AuthorName(node.data.nom, node.data.cognom, node.data.draw_object);
+        node.data.name_object = name_object;
+        node.data.draw_object.add(node.data.name_object);
+
       }
     }
 
     // render selection
-    if(that.selection) {
-      object_selection.render(scene, camera);
-    }
-
-    // update stats
-    if(that.show_stats) {
-      stats.update();
-    }
+    object_selection.render(scene, camera);
 
     // render scene
     renderer.render( scene, camera );
-  }
-
-  /**
-   *  Prints info from the attribute info_text.
-   */
-  function printInfo(text) {
-    var str = '';
-    for(var index in info_text) {
-      if(str !== '' && info_text[index] !== '') {
-        str += " - ";
-      }
-      str += info_text[index];
-    }
-    document.getElementById("graph-info").innerHTML = str;
   }
 
   // Generate random number
   function randomFromTo(from, to) {
     return Math.floor(Math.random() * (to - from + 1) + from);
   }
-
-  function rotateObject(object, degreeX=0, degreeY=0, degreeZ=0) {
-   object.rotateX(THREE.Math.degToRad(degreeX));
-   object.rotateY(THREE.Math.degToRad(degreeY));
-   object.rotateZ(THREE.Math.degToRad(degreeZ));
-  }
-
-
-/*
-  // Stop layout calculation
-  this.stop_calculating = function() {
-    graph.layout.stop_calculating();
-  };
-*/
 
 };

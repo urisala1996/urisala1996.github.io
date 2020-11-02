@@ -10,7 +10,7 @@ module.exports = function(grunt) {
       },
       graphVisualization: {
         files: {
-          'build/graph.min.js': ['webgl-frameworks/three.min.js', 'src/graph.js', 'src/utils/*.js', 'src/layouts/*.js']
+          'build/graph.min.js': ['webgl-frameworks/three.min.js', 'src/graph.js', 'src/utils/*.js', 'src/layouts/*.js', 'webgl-frameworks/THREE.MeshLine.js']
         }
       }
     }

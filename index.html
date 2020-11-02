@@ -6,11 +6,10 @@
     <title> Sociograma Interactiu</title>
     <script src="build/graph.min.js"></script>
     <script src="simple_graph.js"></script>
-    <script src="webgl-frameworks/THREE.MeshLine.js"></script>
     <script type="text/javascript">
       var drawing;
       function createDrawing() {
-        drawing = new Drawing.SimpleGraph({layout: '3d', selection: true, numNodes: 5, numEdges: 1, graphLayout:{attraction: 10, repulsion: 0.5}, showStats: false, showInfo: true});
+        drawing = new Drawing.SimpleGraph({selection: true});
       }
     </script>
 
