@@ -200,8 +200,8 @@ Drawing.SimpleGraph = function(options) {
 
     node4.data.nom        = "RICHARD";
     node4.data.cognom     = "AVEDON";
-    node4.data.yearBorn   = "1928/05/15";
-    node4.data.yearDeath  = "1987/10/01";
+    node4.data.yearBorn   = "1923/05/15";
+    node4.data.yearDeath  = "2004/10/01";
     node4.data.childs     = "1 Fill*";
     node4.data.otherInfo  = 0;
     node4.position.x      = 29.65;
