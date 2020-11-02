@@ -53,6 +53,9 @@ THREE.AuthorName = function( nom, cognom, parameters) {
 THREE.AuthorInfo = function( yearBorn, yearDeath, childs, otherInfo, parameters) {
   parameters = parameters || {};
 
+  var deathDate= new Date(yearDeath);
+  var bornDate= new Date(yearBorn);
+
   var labelCanvas = document.createElement( "canvas" );
 
   function create() {
@@ -68,16 +71,16 @@ THREE.AuthorInfo = function( yearBorn, yearDeath, childs, otherInfo, parameters)
     xc.font = "24pt" + " Aileron";
     xc.textBaseline = 'top';
     //xc.textAlign = 'center';
-    if(yearDeath != 0 && yearBorn != 0) {
-      xc.fillText(yearBorn + " - " + yearDeath, 0, 50);
+    if(yearDeath != "" && yearBorn != "") {
+      xc.fillText(bornDate.getFullYear() + " - " + deathDate.getFullYear(), 0, 50);
       offset = offset + 35;
-      xc.fillText(yearDeath-yearBorn + " anys", 35, 50+offset);
+      xc.fillText(this.getAge(yearBorn,yearDeath) + " anys", 35, 50+offset);
       offset = offset + 35;
     }else{
-      if(yearBorn != 0){
-        xc.fillText(yearBorn,0,50);
+      if(yearBorn != ""){
+        xc.fillText(bornDate.getFullYear(),0,50);
         xc.fillStyle = "#246dad";
-        xc.fillText(2020-yearBorn + " anys",105,50);
+        xc.fillText(this.getAge(yearBorn,yearDeath) + " anys",105,50);
         xc.fillStyle = "#000000";
         offset = offset + 35;
       }
@@ -119,3 +122,28 @@ THREE.AuthorInfo = function( yearBorn, yearDeath, childs, otherInfo, parameters)
 
   return create();
 };
+
+function getAge(born,death) {
+
+  var today,birthDate,age,m,deathDate;
+
+  if(death == ""){
+    today = new Date();
+    birthDate = new Date(born);
+    age = today.getFullYear() - birthDate.getFullYear();
+    m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+  }else{
+    deathDate = new Date(death);
+    birthDate = new Date(born);
+    age = deathDate.getFullYear() - birthDate.getFullYear();
+    m = deathDate.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && deathDate.getDate() < birthDate.getDate())) {
+        age--;
+    }
+  }
+  return age;
+
+}

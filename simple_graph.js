@@ -17,7 +17,7 @@ Drawing.SimpleGraph = function(options) {
   var colorSelection  = 0x0398fc;
   var colorRelatives  = 0xb5ccff;
   var colorBase       = 0xcccccc;
-  var colorEdge       = 0x595959;
+  var colorEdge       = 0x909090;
 
   var green           = 0x61CF63;
   var red             = 0xF54545;
@@ -160,8 +160,8 @@ Drawing.SimpleGraph = function(options) {
     /* The ObjectID (for rendering) starts and OFFSET=8 + NodeID*/
     node0.data.nom        = "SALVADOR";
     node0.data.cognom     = "DALÍ";
-    node0.data.yearBorn   = 1904;
-    node0.data.yearDeath  = 1989;
+    node0.data.yearBorn   = "1904/05/11";
+    node0.data.yearDeath  = "1989/01/23";
     node0.data.childs     = 0;
     node0.data.otherInfo  = 0;
     node0.position.x      = 803.898;
@@ -170,8 +170,8 @@ Drawing.SimpleGraph = function(options) {
 
     node1.data.nom        = "ANDY";
     node1.data.cognom     = "WARHOL";
-    node1.data.yearBorn   = 1928;
-    node1.data.yearDeath  = 1987;
+    node1.data.yearBorn   = "1928/08/06";
+    node1.data.yearDeath  = "1987/02/22";
     node1.data.childs     = 0;
     node1.data.otherInfo  = 0;
     node1.position.x      = 12.2;
@@ -180,8 +180,8 @@ Drawing.SimpleGraph = function(options) {
 
     node2.data.nom        = "ROBERT";
     node2.data.cognom     = "MAPPLETHORPE";
-    node2.data.yearBorn   = 1946;
-    node2.data.yearDeath  = 1989;
+    node2.data.yearBorn   = "1946/11/04";
+    node2.data.yearDeath  = "1989/03/09";
     node2.data.childs     = 0;
     node2.data.otherInfo  = 0;
     node2.position.x      = -484.43;
@@ -189,9 +189,9 @@ Drawing.SimpleGraph = function(options) {
     node2.position.z      = 1174.03;
 
     node3.data.nom        = "MIQUEL";
-    node3.data.cognom     =  "BARCELÓ";
-    node3.data.yearBorn   = 1957;
-    node3.data.yearDeath  = 0;
+    node3.data.cognom     = "BARCELÓ";
+    node3.data.yearBorn   = "1957/01/08";
+    node3.data.yearDeath  = "";
     node3.data.childs     = "Marcela i Joaquim";
     node3.data.otherInfo  = "Mare artista";
     node3.position.x      = 271.717;
@@ -200,8 +200,8 @@ Drawing.SimpleGraph = function(options) {
 
     node4.data.nom        = "RICHARD";
     node4.data.cognom     = "AVEDON";
-    node4.data.yearBorn   = 1928;
-    node4.data.yearDeath  = 1987;
+    node4.data.yearBorn   = "1928/05/15";
+    node4.data.yearDeath  = "1987/10/01";
     node4.data.childs     = "1 Fill*";
     node4.data.otherInfo  = 0;
     node4.position.x      = 29.65;
@@ -210,8 +210,8 @@ Drawing.SimpleGraph = function(options) {
 
     node5.data.nom        = "ANTONIO";
     node5.data.cognom     = "SAURA";
-    node5.data.yearBorn   = 1930;
-    node5.data.yearDeath  = 1998;
+    node5.data.yearBorn   = "1930/09/22";
+    node5.data.yearDeath  = "1998/07/22";
     node5.data.childs     = "María, Ana i Elena";
     node5.data.otherInfo  = 0;
     node5.position.x      = 953.28;
@@ -220,8 +220,8 @@ Drawing.SimpleGraph = function(options) {
 
     node6.data.nom        = "ALIGHIERO";
     node6.data.cognom     = "BOETTI";
-    node6.data.yearBorn   = 1940;
-    node6.data.yearDeath  = 1994;
+    node6.data.yearBorn   = "1940/12/16";
+    node6.data.yearDeath  = "1994/04/24";
     node6.data.childs     = "Matteo, Agata i Giordano";
     node6.data.otherInfo  = 0;
     node6.position.x      = -372.66;
@@ -230,8 +230,8 @@ Drawing.SimpleGraph = function(options) {
 
     node7.data.nom        = "EDUARDO";
     node7.data.cognom     = "ARROYO";
-    node7.data.yearBorn   = 1937;
-    node7.data.yearDeath  = 2018;
+    node7.data.yearBorn   = "1937/02/26";
+    node7.data.yearDeath  = "2018/10/14";
     node7.data.childs     = "Pimpi*";
     node7.data.otherInfo  = 0;
     node7.position.x      = 1036;
@@ -240,8 +240,8 @@ Drawing.SimpleGraph = function(options) {
 
     node8.data.nom        = "MANUEL";
     node8.data.cognom     = "MILLARES";
-    node8.data.yearBorn   = 1926;
-    node8.data.yearDeath  = 1972;
+    node8.data.yearBorn   = "1926/01/17";
+    node8.data.yearDeath  = "1972/08/14";
     node8.data.childs     = "Eva";
     node8.data.otherInfo  = 0;
     node8.position.x      = 1584.53;
@@ -250,8 +250,8 @@ Drawing.SimpleGraph = function(options) {
 
     node9.data.nom        = "LUCIO";
     node9.data.cognom     = "FONTANA";
-    node9.data.yearBorn   = 1899;
-    node9.data.yearDeath  = 1968;
+    node9.data.yearBorn   = "1899/02/19";
+    node9.data.yearDeath  = "1968/09/07";
     node9.data.childs     = 0;
     node9.data.otherInfo  = "Pare artista";
     node9.position.x      = 256.72;
@@ -260,58 +260,58 @@ Drawing.SimpleGraph = function(options) {
 
     node10.data.nom        = "PABLO";
     node10.data.cognom     = "PALAZUELO";
-    node10.data.yearBorn   = 1916;
-    node10.data.yearDeath  = 2007;
+    node10.data.yearBorn   = "1916/10/06";
+    node10.data.yearDeath  = "2007/10/03";
     node10.data.childs     = 0;
     node10.data.otherInfo  = 0;
     node10.position.x      = 1669.95;
     node10.position.y      = -531.577;
     node10.position.z      = -1053.35;
 
-    node11.data.nom         = "ANTONI";
-    node11.data.cognom      = "TÀPIES";
-    node11.data.yearBorn   = 1923;
-    node11.data.yearDeath  = 2012;
+    node11.data.nom        = "ANTONI";
+    node11.data.cognom     = "TÀPIES";
+    node11.data.yearBorn   = "1923/12/13";
+    node11.data.yearDeath  = "2012/02/06";
     node11.data.childs     = "Antoni, Clara i Miquel Àngel";
     node11.data.otherInfo  = 0;
     node11.position.x      = 705.88;
     node11.position.y      = 645.087;
     node11.position.z      = -345.177;
 
-    node12.data.nom         = "EDUARDO";
-    node12.data.cognom      = "CHILLIDA";
-    node12.data.yearBorn   = 1924;
-    node12.data.yearDeath  = 2002;
+    node12.data.nom        = "EDUARDO";
+    node12.data.cognom     = "CHILLIDA";
+    node12.data.yearBorn   = "1924/01/10";
+    node12.data.yearDeath  = "2002/08/19";
     node12.data.childs     = "Guiomar, Pedro, Iñaki, Karmentxina, Susana, María, Luis i Eduardo";
     node12.data.otherInfo  = "Pare i mare artistes frustrats";
     node12.position.x      = 1816.20;
     node12.position.y      = -86.06;
     node12.position.z      = -784.397;
 
-    node13.data.nom         = "ALEXANDER";
-    node13.data.cognom      = "CALDER";
-    node13.data.yearBorn   = 1898;
-    node13.data.yearDeath  = 1976;
+    node13.data.nom        = "ALEXANDER";
+    node13.data.cognom     = "CALDER";
+    node13.data.yearBorn   = "1898/07/22";
+    node13.data.yearDeath  = "1976/11/11";
     node13.data.childs     = "Mary i Sandra";
     node13.data.otherInfo  = "Pare, mare i avi aristes";
     node13.position.x      = 1661.47;
     node13.position.y      = -621.39;
     node13.position.z      = -247.71;
 
-    node14.data.nom         = "JOAN";
-    node14.data.cognom      = "MIRÓ";
-    node14.data.yearBorn   = 1893;
-    node14.data.yearDeath  = 1983;
+    node14.data.nom        = "JOAN";
+    node14.data.cognom     = "MIRÓ";
+    node14.data.yearBorn   = "1893/04/20";
+    node14.data.yearDeath  = "1983/12/25";
     node14.data.childs     = "Maria Dolors";
     node14.data.otherInfo  = 0;
     node14.position.x      = 1104.95;
     node14.position.y      = -154.78;
     node14.position.z      = -331.42;
 
-    node15.data.nom       = "MAN";
-    node15.data.cognom      = "RAY";
-    node15.data.yearBorn   = 1890;
-    node15.data.yearDeath  = 1976;
+    node15.data.nom        = "MAN";
+    node15.data.cognom     = "RAY";
+    node15.data.yearBorn   = "1890/08/27";
+    node15.data.yearDeath  = "1976/11/18";
     node15.data.childs     = 0;
     node15.data.otherInfo  = 0;
     node15.position.x      = 1440.21;
@@ -320,8 +320,8 @@ Drawing.SimpleGraph = function(options) {
 
     node16.data.nom        = "JEAN";
     node16.data.cognom     = "ARP";
-    node16.data.yearBorn   = 1897;
-    node16.data.yearDeath  = 1966;
+    node16.data.yearBorn   = "1887/09/16";
+    node16.data.yearDeath  = "1966/06/07";
     node16.data.childs     = 0;
     node16.data.otherInfo  = 0;
     node16.position.x      = 1059.58;
@@ -330,8 +330,8 @@ Drawing.SimpleGraph = function(options) {
 
     node17.data.nom        = "GIACOMO";
     node17.data.cognom     = "BALLA";
-    node17.data.yearBorn   = 1871;
-    node17.data.yearDeath  = 1958;
+    node17.data.yearBorn   = "1871/07/18";
+    node17.data.yearDeath  = "1958/03/01";
     node17.data.childs     = "Luce* i Elica";
     node17.data.otherInfo  = "Pare aficionat a la fotografia";
     node17.position.x      = 600.14;
@@ -340,8 +340,8 @@ Drawing.SimpleGraph = function(options) {
 
     node18.data.nom        = "CHRISTO";
     node18.data.cognom     = "";
-    node18.data.yearBorn   = 1935;
-    node18.data.yearDeath  = 2020;
+    node18.data.yearBorn   = "1935/01/01";
+    node18.data.yearDeath  = "2020/01/01";
     node18.data.childs     = "Cyril";
     node18.data.otherInfo  = 0;
     node18.position.x      = 1731.66;
@@ -350,8 +350,8 @@ Drawing.SimpleGraph = function(options) {
 
     node19.data.nom        = "EQUIPO";
     node19.data.cognom     = "CRÓNICA";
-    node19.data.yearBorn   = 0;
-    node19.data.yearDeath  = 0;
+    node19.data.yearBorn   = "";
+    node19.data.yearDeath  = "";
     node19.data.childs     = 0;
     node19.data.otherInfo  = 0;
     node19.position.x      = 986.35;
@@ -360,8 +360,8 @@ Drawing.SimpleGraph = function(options) {
 
     node20.data.nom        = "MANOLO";
     node20.data.cognom     = "VALDÉS";
-    node20.data.yearBorn   = 1942;
-    node20.data.yearDeath  = 0;
+    node20.data.yearBorn   = "1942/03/08";
+    node20.data.yearDeath  = "";
     node20.data.childs     = 0;
     node20.data.otherInfo  = 0;
     node20.position.x      = 720;//722.76;
@@ -370,8 +370,8 @@ Drawing.SimpleGraph = function(options) {
 
     node21.data.nom        = "RAFAEL";
     node21.data.cognom     = "SOLBES";
-    node21.data.yearBorn   = 1940;
-    node21.data.yearDeath  = 1981;
+    node21.data.yearBorn   = "1940/01/01";
+    node21.data.yearDeath  = "1981/11/10";
     node21.data.childs     = 0;
     node21.data.otherInfo  = 0;
     node21.position.x      = 1200;//1277.69;
@@ -419,15 +419,16 @@ Drawing.SimpleGraph = function(options) {
     graph.addEdge(node3,node14);
     graph.addEdge(node3,node1);
 
-    /* Invisible connections */
     graph.addEdge(node4,node5);
     graph.addEdge(node4,node2);
     graph.addEdge(node4,node1);
 
     graph.addEdge(node5,node19);
     graph.addEdge(node5,node11);
-    //graph.addEdge(node5,node18);
     graph.addEdge(node5,node7);
+    //Equipo cronica new behavior
+    graph.addEdge(node5,node20);
+    graph.addEdge(node5,node21);
 
     graph.addEdge(node6,node9);
 
@@ -435,6 +436,9 @@ Drawing.SimpleGraph = function(options) {
     graph.addEdge(node7,node19);
     graph.addEdge(node7,node0);
     graph.addEdge(node7,node14);
+    //Equipo cronica new behavior
+    graph.addEdge(node7,node20);
+    graph.addEdge(node7,node21);
 
     graph.addEdge(node8,node5);
     graph.addEdge(node8,node14);
@@ -451,6 +455,9 @@ Drawing.SimpleGraph = function(options) {
     graph.addEdge(node11,node14);
     graph.addEdge(node11,node19);
     graph.addEdge(node11,node0);
+    //Equipo cronica new behavior
+    graph.addEdge(node11,node20);
+    graph.addEdge(node11,node21);
 
     graph.addEdge(node12,node13);
     graph.addEdge(node12,node14);
@@ -792,12 +799,47 @@ Drawing.SimpleGraph = function(options) {
       }
     }
 
-    if(objName == 19){ //Equipo Crónica
+    // Equipo crónica corner cases
+    if(objName == 19){
       auxNode = graph.getNode(20);
       auxNode.data.draw_object.material.color.setHex(colorSelection);
       auxNode = graph.getNode(21);
       auxNode.data.draw_object.material.color.setHex(colorSelection);
     }
+
+    if(objName == 20){
+
+      selectedNode = graph.getNode(19);
+      for(i=0; i<selectedNode.nodesTo.length; i++) {
+        sceneObject = selectedNode.nodesTo[i].data.draw_object;
+        sceneObject.material.color.setHex(colorRelatives);
+      }
+
+      auxNode = graph.getNode(19);
+      auxNode.data.draw_object.material.color.setHex(colorSelection);
+      auxNode = graph.getNode(20);
+      auxNode.data.draw_object.material.color.setHex(colorSelection);
+      auxNode = graph.getNode(21);
+      auxNode.data.draw_object.material.color.setHex(colorSelection);
+    }
+
+    if(objName == 21){
+
+      selectedNode = graph.getNode(19);
+      for(i=0; i<selectedNode.nodesTo.length; i++) {
+        sceneObject = selectedNode.nodesTo[i].data.draw_object;
+        sceneObject.material.color.setHex(colorRelatives);
+      }
+
+      auxNode = graph.getNode(19);
+      auxNode.data.draw_object.material.color.setHex(colorSelection);
+      auxNode = graph.getNode(20);
+      auxNode.data.draw_object.material.color.setHex(colorSelection);
+      auxNode = graph.getNode(21);
+      auxNode.data.draw_object.material.color.setHex(colorSelection);
+    }
+
+
 
   }
 
@@ -843,12 +885,8 @@ Drawing.SimpleGraph = function(options) {
 
             node.data.info_object.visible = true;
 
-            //node.data.info_object.position.x = node.data.draw_object.position.x + 550;
-            //node.data.info_object.position.y = node.data.draw_object.position.y; //Testing this position
-            //node.data.info_object.position.z = node.data.draw_object.position.z;
-
-            node.data.info_object.position.x = 250;
-            node.data.info_object.position.y = -200; //Testing this position
+            node.data.info_object.position.x = 400;
+            node.data.info_object.position.y = -200;
             node.data.info_object.position.z = 0;
 
             node.data.info_object.lookAt(camera.position);
@@ -865,7 +903,6 @@ Drawing.SimpleGraph = function(options) {
             info_object = new THREE.AuthorInfo(node.data.yearBorn,node.data.yearDeath,node.data.childs,node.data.otherInfo, node.data.draw_object);
             node.data.info_object = info_object;
             node.data.draw_object.add(node.data.info_object);
-            //scene.add( node.data.info_object );
           }
 
         }
@@ -873,9 +910,9 @@ Drawing.SimpleGraph = function(options) {
         if(node.data.name_object !== undefined) {
 
           //Set position for AuthorName
-          node.data.name_object.position.x = node.data.draw_object.position.x;
-          node.data.name_object.position.y = node.data.draw_object.position.y - 50;
-          node.data.name_object.position.z = node.data.draw_object.position.z;
+          node.data.name_object.position.x = 0;
+          node.data.name_object.position.y = -40;
+          node.data.name_object.position.z = 5;
 
           node.data.name_object.lookAt(camera.position);
           node.data.draw_object.lookAt(camera.position);
@@ -885,8 +922,8 @@ Drawing.SimpleGraph = function(options) {
 
           name_object = new THREE.AuthorName(node.data.nom, node.data.cognom, node.data.draw_object);
           node.data.name_object = name_object;
+          node.data.draw_object.add(node.data.name_object);
 
-          scene.add( node.data.name_object );
         }
       }
     }
