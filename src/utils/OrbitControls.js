@@ -1011,7 +1011,7 @@ THREE.OrbitControls = function ( object, domElement ) {
 
 		if ( scope.enabled === false ) return;
 
-		event.preventDefault(); // prevent scrolling
+		//event.preventDefault(); // prevent scrolling
 
 		switch ( event.touches.length ) {
 

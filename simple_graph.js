@@ -743,8 +743,6 @@ Drawing.SimpleGraph = function(options) {
 
         triangles.push(triangle_mesh);
 
-
-
         scene.add(triangle_mesh);
 
       break;
