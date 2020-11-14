@@ -34,6 +34,7 @@ Drawing.SimpleGraph = function(options) {
 
   var geometries = [];
   var triangles = [];
+  var node_objects = [];
 
   var that=this;
 
@@ -49,6 +50,8 @@ Drawing.SimpleGraph = function(options) {
 
     camera = new THREE.PerspectiveCamera(40, window.innerWidth/window.innerHeight, 1, 1000000);
     camera.position.z = 10000;
+    //camera.layers.enable(0);
+    //camera.lauers.enable(1);
 
     resolution = new THREE.Vector2(window.innerWidth,window.innerHeight);
     //controls = new THREE.TrackballControls(camera);
@@ -616,6 +619,8 @@ Drawing.SimpleGraph = function(options) {
     if(isInvisible){
       node.data.isInvisible = true;
     }
+    //node.data.draw_object.layers.set(0);
+    node_objects.push(node.data.draw_object);
     scene.add( node.data.draw_object );
   }
 
@@ -764,7 +769,7 @@ Drawing.SimpleGraph = function(options) {
       break;
 
     }
-
+      //line.layers.set(1);
       scene.add( line );
   }
 
@@ -898,6 +903,8 @@ Drawing.SimpleGraph = function(options) {
         if(node.show_authorInfo){
           info_object = new THREE.AuthorInfo(node.data.yearBorn,node.data.yearDeath,node.data.childs,node.data.otherInfo, node.data.draw_object);
           node.data.info_object = info_object;
+          //node.data.info_object.layers.set(1); //Set the layer to 1 for the labels
+
           node.data.draw_object.add(node.data.info_object);
         }
 
@@ -918,13 +925,15 @@ Drawing.SimpleGraph = function(options) {
 
         name_object = new THREE.AuthorName(node.data.nom, node.data.cognom, node.data.draw_object);
         node.data.name_object = name_object;
+        //node.data.name_object.layers.set(1); //Set the layer to 1 for the labels
+
         node.data.draw_object.add(node.data.name_object);
 
       }
     }
 
     // render selection
-    object_selection.render(scene, camera);
+    object_selection.render(node_objects, camera);
 
     // render scene
     renderer.render( scene, camera );

@@ -39,15 +39,16 @@ THREE.ObjectSelection = function(parameters) {
     }
   }
 
-  this.render = function(scene, camera) {
+  this.render = function(nodes, camera) {
     var vector = new THREE.Vector3( mouse.x, mouse.y, 0.5 );
     vector.unproject(camera);
 
     var raycaster = new THREE.Raycaster(camera.position, vector.sub(camera.position).normalize());
 
-    var intersects = raycaster.intersectObject(scene, true);
+    var intersects = raycaster.intersectObjects(nodes, false);
 
     if( intersects.length > 0 ) {
+
       if ( this.INTERSECTED != intersects[ 0 ].object ) {
         if ( this.INTERSECTED ) {
           //this.INTERSECTED.material.color.setHex( this.INTERSECTED.currentHex );
@@ -57,6 +58,9 @@ THREE.ObjectSelection = function(parameters) {
         //this.INTERSECTED.currentHex = this.INTERSECTED.material.color.getHex();
         //this.INTERSECTED.material.color.setHex( 0xff0000 );
         if(typeof callbackSelected === 'function') {
+          //for ( var i = 0; i < intersects.length; i++ ) {
+          //  console.log( intersects[ i ].object );
+          //}
           callbackSelected(this.INTERSECTED);
         }
       }
