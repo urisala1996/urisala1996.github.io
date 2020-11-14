@@ -14,8 +14,8 @@ Drawing.SimpleGraph = function(options) {
   this.nodes_count = options.numNodes || 20;
   this.edges_count = options.numEdges || 10;
 
-  var colorSelection  = 0x0398fc;
-  var colorRelatives  = 0xb5ccff;
+  var colorSelection  = 0x037bfc;//0x0398fc;
+  var colorRelatives  = 0x70b3ff;//0xb5ccff;
   var colorBase       = 0xcccccc;
   var colorEdge       = 0x909090;
 
